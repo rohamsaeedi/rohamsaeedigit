@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" id="html-root">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roham Saeedi — Podcasts on Language, Literature &amp; Culture | رهام سعیدی</title>
+<meta name="description" content="Roham Saeedi — English language educator, literary scholar, writer, and podcast producer. Philosophical reflections, Ink and Immortality, and bilingual Islamic world studies podcasts.">
+<meta name="author" content="Roham Saeedi">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Roham Saeedi — Podcasts on Language, Literature & Culture">
+<meta property="og:description" content="English language educator, literary scholar, writer, and podcast producer.">
+<meta property="og:image" content="roham-seal.jpg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Roham Saeedi — Podcasts on Language, Literature & Culture">
+<meta name="twitter:image" content="roham-seal.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Inter:wght@400;500;600&family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --indigo:#23085A;
+    --indigo-deep:#170540;
+    --c1:#23085A;
+    --c2:#7A2E2E;
+    --c3:#1F5C4E;
+    --gold:#C8A96A;
+    --ink:#1A1A1A;
+    --muted:#5C5A66;
+    --bg:#FFFFFF;
+    --bg-soft:#F5F4F8;
+    --border:#E3E1EA;
+    --radius:14px;
+    --radius-sm:8px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    font-size:16.5px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  html[lang="fa"] body, body.show-fa{ font-family:'Vazirmatn', sans-serif; line-height:1.9; }
+  .lang-fa{ display:none; }
+  body.show-fa .lang-fa{ display:block; }
+  body.show-fa .lang-en{ display:none; }
+  body.show-fa span.lang-fa{ display:inline; }
+  body.show-fa span.lang-en{ display:none; }
+  span.lang-fa{ display:none; }
+
+  h1,h2,h3{
+    font-family:'Archivo', sans-serif;
+    font-weight:800;
+    line-height:1.15;
+    margin:0;
+    color:var(--ink);
+  }
+  html[lang="fa"] h1, html[lang="fa"] h2, html[lang="fa"] h3,
+  body.show-fa h1, body.show-fa h2, body.show-fa h3{
+    font-family:'Vazirmatn', sans-serif; font-weight:700;
+  }
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+  .wrap{ max-width:1080px; margin:0 auto; padding:0 24px; }
+  .tag{
+    display:inline-block;
+    font-size:0.74rem;
+    font-weight:600;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--gold);
+    background:rgba(200,169,106,0.12);
+    padding:5px 12px;
+    border-radius:20px;
+    margin-bottom:14px;
+  }
+  body.show-fa .tag{ letter-spacing:0; }
+
+  /* NAV */
+  .site-nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 24px;
+    border-bottom:1px solid var(--border);
+  }
+  .site-nav .inner{
+    max-width:1080px; margin:0 auto; width:100%;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .brand{
+    font-family:'Archivo', sans-serif; font-weight:800; font-size:1.15rem; color:var(--indigo);
+  }
+  html[lang="fa"] .brand, body.show-fa .brand{ font-family:'Vazirmatn', sans-serif; font-weight:700; }
+  .nav-links{ display:flex; align-items:center; gap:26px; }
+  .nav-links a{ font-size:0.92rem; font-weight:500; color:var(--ink); }
+  .nav-links a:hover{ color:var(--indigo); }
+  @media (max-width:760px){ .nav-links a.hide-mobile{ display:none; } }
+  #lang-toggle{
+    font-family:'Inter', sans-serif; font-size:0.85rem; font-weight:600;
+    background:var(--indigo); color:#fff; border:none;
+    padding:9px 18px; border-radius:24px; cursor:pointer;
+  }
+  #lang-toggle:hover{ background:var(--indigo-deep); }
+
+  /* HERO */
+  .hero{
+    padding:64px 0 56px;
+  }
+  .hero .inner{
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:52px; align-items:center;
+  }
+  @media (max-width:820px){ .hero .inner{ grid-template-columns:1fr; } }
+  .hero h1{ font-size:clamp(2.1rem, 4.2vw, 3rem); margin-bottom:20px; }
+  .hero .lede{ font-size:1.08rem; color:var(--muted); margin-bottom:28px; max-width:480px; }
+  .cta-btn{
+    display:inline-block; background:var(--indigo); color:#fff;
+    font-weight:600; font-size:0.95rem; padding:13px 26px; border-radius:8px;
+  }
+  .cta-btn:hover{ background:var(--indigo-deep); }
+  .hero-photo{
+    width:100%; aspect-ratio:4/5; object-fit:cover; border-radius:var(--radius);
+    box-shadow:0 20px 50px rgba(35,8,90,0.16);
+  }
+
+  /* STATS */
+  .stats-bar{ background:var(--indigo); padding:36px 0; }
+  .stats-bar .inner{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:20px; text-align:center;
+  }
+  @media (max-width:600px){ .stats-bar .inner{ grid-template-columns:1fr; gap:28px; } }
+  .stat-num{ font-family:'Archivo', sans-serif; font-weight:800; font-size:2rem; color:#fff; }
+  html[lang="fa"] .stat-num, body.show-fa .stat-num{ font-family:'Vazirmatn', sans-serif; }
+  .stat-label{ font-size:0.88rem; color:rgba(255,255,255,0.75); margin-top:4px; }
+
+  /* SECTION HEAD */
+  section{ padding:64px 0; }
+  section.soft{ background:var(--bg-soft); }
+  .section-head{ max-width:600px; margin-bottom:40px; }
+  .section-head h2{ font-size:clamp(1.7rem, 3.2vw, 2.2rem); margin-bottom:10px; }
+  .section-head p{ color:var(--muted); font-size:1rem; margin:0; }
+
+  /* COLLECTIONS GRID */
+  .coll-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  @media (max-width:860px){ .coll-grid{ grid-template-columns:1fr; } }
+  .coll-card{
+    border:1px solid var(--border); border-radius:var(--radius); overflow:hidden;
+    background:#fff; display:flex; flex-direction:column;
+  }
+  .coll-cover{
+    height:120px; display:flex; align-items:center; justify-content:center;
+    font-family:'Archivo', sans-serif; font-weight:800; font-size:2.2rem; color:#fff;
+  }
+  .coll-card.c1 .coll-cover{ background:var(--c1); }
+  .coll-card.c2 .coll-cover{ background:var(--c2); }
+  .coll-card.c3 .coll-cover{ background:var(--c3); }
+  .coll-body{ padding:22px 22px 26px; flex:1; display:flex; flex-direction:column; }
+  .coll-kicker{ font-size:0.76rem; font-weight:600; letter-spacing:0.05em; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
+  body.show-fa .coll-kicker{ letter-spacing:0; }
+  .coll-body h3{ font-size:1.2rem; margin-bottom:10px; }
+  .coll-body p{ font-size:0.94rem; color:var(--muted); margin:0 0 16px; flex:1; }
+  .coll-link{ font-size:0.88rem; font-weight:600; color:var(--indigo); }
+  .coll-link:hover{ text-decoration:underline; }
+
+  /* ABOUT */
+  .about-block{ display:grid; grid-template-columns:1fr; gap:40px; max-width:760px; }
+  .about-block h3{ font-size:1.3rem; margin-bottom:14px; color:var(--indigo); }
+  .about-block .prose p{ margin:0 0 1.05em; color:var(--ink); font-size:1rem; }
+  .about-block .prose p:last-child{ margin-bottom:0; }
+
+  /* EPISODES */
+  .episode-group{ margin-bottom:44px; }
+  .episode-group:last-child{ margin-bottom:0; }
+  .eg-head{ display:flex; align-items:center; gap:12px; margin-bottom:18px; }
+  .eg-dot{ width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+  .eg-head h3{ font-size:1.15rem; }
+  .eg-note{ font-size:0.88rem; color:var(--muted); margin:6px 0 0 22px; }
+
+  .episode{
+    display:flex; gap:16px; align-items:flex-start;
+    padding:20px; border:1px solid var(--border); border-radius:var(--radius);
+    background:#fff; margin-bottom:12px;
+  }
+  .ep-num{
+    font-family:'Archivo', sans-serif; font-weight:800; font-size:1.1rem;
+    color:#fff; width:34px; height:34px; border-radius:8px;
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .episode-body{ flex:1; min-width:0; }
+  .episode-title{ font-family:'Archivo', sans-serif; font-weight:800; font-size:1.05rem; margin-bottom:4px; }
+  html[lang="fa"] .episode-title, body.show-fa .episode-title{ font-family:'Vazirmatn', sans-serif; font-weight:700; }
+  .episode-desc{ font-size:0.94rem; color:var(--muted); margin-bottom:12px; }
+  .episode-controls{ display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
+  audio{ height:36px; max-width:280px; width:100%; }
+  .dl-link{
+    font-size:0.84rem; font-weight:600; color:#fff; background:var(--indigo);
+    padding:7px 16px; border-radius:20px;
+  }
+  .dl-link:hover{ background:var(--indigo-deep); }
+
+  /* FOOTER */
+  footer{ background:var(--indigo-deep); color:rgba(255,255,255,0.85); padding:48px 0 30px; }
+  .footer-grid{ display:grid; grid-template-columns:1.3fr 1fr; gap:32px; margin-bottom:32px; }
+  @media (max-width:600px){ .footer-grid{ grid-template-columns:1fr; } }
+  footer .foot-name{ font-family:'Archivo', sans-serif; font-weight:800; color:#fff; font-size:1.15rem; margin-bottom:8px; }
+  html[lang="fa"] footer .foot-name, body.show-fa footer .foot-name{ font-family:'Vazirmatn', sans-serif; }
+  footer .foot-tag{ font-size:0.92rem; color:rgba(255,255,255,0.65); }
+  .foot-links{ display:flex; flex-direction:column; gap:10px; }
+  .foot-links a{ font-size:0.9rem; color:rgba(255,255,255,0.75); }
+  .foot-links a:hover{ color:#fff; }
+  .foot-bottom{ border-top:1px solid rgba(255,255,255,0.15); padding-top:20px; font-size:0.82rem; color:rgba(255,255,255,0.55); }
+
+  @media (prefers-reduced-motion: no-preference){
+    .reveal{ opacity:0; transform:translateY(14px); transition:opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.in{ opacity:1; transform:translateY(0); }
+  }
+  :focus-visible{ outline:2px solid var(--indigo); outline-offset:2px; }
+</style>
+</head>
+<body class="show-en">
+
+<header class="site-nav">
+  <div class="inner">
+    <div class="brand">
+      <span class="lang-en">Roham Saeedi</span>
+      <span class="lang-fa">رهام سعیدی</span>
+    </div>
+    <div class="nav-links">
+      <a href="#about-platform" class="hide-mobile"><span class="lang-en">About</span><span class="lang-fa">درباره</span></a>
+      <a href="#collections" class="hide-mobile"><span class="lang-en">Collections</span><span class="lang-fa">مجموعه‌ها</span></a>
+      <a href="#episodes" class="hide-mobile"><span class="lang-en">Episodes</span><span class="lang-fa">قسمت‌ها</span></a>
+      <button id="lang-toggle" aria-label="Toggle language">
+        <span class="lang-en">فارسی</span>
+        <span class="lang-fa">English</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="hero reveal">
+  <div class="wrap inner">
+    <div>
+      <span class="tag">
+        <span class="lang-en">Podcast Platform</span>
+        <span class="lang-fa">پایگاه پادکست</span>
+      </span>
+      <h1>
+        <span class="lang-en">We speak across languages. We think across cultures.</span>
+        <span class="lang-fa">فراتر از زبان سخن می‌گوییم؛ فراتر از فرهنگ می‌اندیشیم.</span>
+      </h1>
+      <p class="lede">
+        <span class="lang-en">Roham Saeedi — English language educator, literary scholar, writer, and podcast producer, bringing academic knowledge to life through bilingual and trilingual audio.</span>
+        <span class="lang-fa">رهام سعیدی — آموزگار زبان انگلیسی، پژوهشگر ادبی، نویسنده و تولیدکننده پادکست؛ دانش آکادمیک را از رهگذر تولیدات صوتی دوزبانه و سه‌زبانه به گوش جان می‌رساند.</span>
+      </p>
+      <a href="#episodes" class="cta-btn">
+        <span class="lang-en">Listen now</span>
+        <span class="lang-fa">اکنون بشنوید</span>
+      </a>
+    </div>
+    <img class="hero-photo" src="roham-seal.jpg" alt="Roham Saeedi">
+  </div>
+</section>
+
+<div class="stats-bar">
+  <div class="wrap inner">
+    <div>
+      <div class="stat-num">3</div>
+      <div class="stat-label">
+        <span class="lang-en">Podcast Collections</span>
+        <span class="lang-fa">مجموعه پادکست</span>
+      </div>
+    </div>
+    <div>
+      <div class="stat-num">2</div>
+      <div class="stat-label">
+        <span class="lang-en">Languages, with a third joining in</span>
+        <span class="lang-fa">زبان، به همراه زبانی سوم</span>
+      </div>
+    </div>
+    <div>
+      <div class="stat-num">5+</div>
+      <div class="stat-label">
+        <span class="lang-en">Episodes and growing</span>
+        <span class="lang-fa">قسمت منتشرشده و در حال افزایش</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="collections" class="reveal">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">
+        <span class="lang-en">Three Bodies of Work</span>
+        <span class="lang-fa">سه حوزه از آثار</span>
+      </span>
+      <h2>
+        <span class="lang-en">The Collections</span>
+        <span class="lang-fa">مجموعه‌ها</span>
+      </h2>
+      <p>
+        <span class="lang-en">Each collection has its own voice, language, and purpose.</span>
+        <span class="lang-fa">هر مجموعه صدا، زبان و هدف خود را دارد.</span>
+      </p>
+    </div>
+    <div class="coll-grid">
+      <div class="coll-card c1">
+        <div class="coll-cover">I</div>
+        <div class="coll-body">
+          <div class="coll-kicker">
+            <span class="lang-en">Monolingual — Persian or English</span>
+            <span class="lang-fa">تک‌زبانه — فارسی یا انگلیسی</span>
+          </div>
+          <h3>
+            <span class="lang-en">Philosophical Reflections</span>
+            <span class="lang-fa">تأملات فلسفی</span>
+          </h3>
+          <p>
+            <span class="lang-en">Independent episodes on life, mortality, and the nature of the human being.</span>
+            <span class="lang-fa">قسمت‌های مستقل در باب زندگی، مرگ و ماهیت انسان.</span>
+          </p>
+          <a class="coll-link" href="#ep-group-1">
+            <span class="lang-en">View episodes →</span>
+            <span class="lang-fa">مشاهده قسمت‌ها ←</span>
+          </a>
+        </div>
+      </div>
+      <div class="coll-card c2">
+        <div class="coll-cover">II</div>
+        <div class="coll-body">
+          <div class="coll-kicker">
+            <span class="lang-en">Monolingual English</span>
+            <span class="lang-fa">تک‌زبانه انگلیسی</span>
+          </div>
+          <h3>
+            <span class="lang-en">Ink and Immortality</span>
+            <span class="lang-fa">جوهر و جاودانگی</span>
+          </h3>
+          <p>
+            <span class="lang-en">On the prominent figures of English literary history, across two seasons.</span>
+            <span class="lang-fa">در باب شخصیت‌های برجسته تاریخ ادبیات انگلیسی، در دو فصل.</span>
+          </p>
+          <a class="coll-link" href="#ep-group-2">
+            <span class="lang-en">View episodes →</span>
+            <span class="lang-fa">مشاهده قسمت‌ها ←</span>
+          </a>
+        </div>
+      </div>
+      <div class="coll-card c3">
+        <div class="coll-cover">III</div>
+        <div class="coll-body">
+          <div class="coll-kicker">
+            <span class="lang-en">Bilingual &amp; Trilingual</span>
+            <span class="lang-fa">دوزبانه و سه‌زبانه</span>
+          </div>
+          <h3>
+            <span class="lang-en">Islamic World Studies</span>
+            <span class="lang-fa">مطالعات جهان اسلام</span>
+          </h3>
+          <p>
+            <span class="lang-en">Educational programs produced for the Cultural Center for Islamic World Studies.</span>
+            <span class="lang-fa">برنامه‌های آموزشی تولیدشده برای کانون فرهنگی مطالعات جهان اسلام.</span>
+          </p>
+          <a class="coll-link" href="#ep-group-4">
+            <span class="lang-en">View episodes →</span>
+            <span class="lang-fa">مشاهده قسمت‌ها ←</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about-platform" class="soft reveal">
+  <div class="wrap about-block">
+    <div>
+      <span class="tag">
+        <span class="lang-en">About the Platform</span>
+        <span class="lang-fa">در باب این پایگاه</span>
+      </span>
+      <h3>
+        <span class="lang-en">A home for thoughtful listening</span>
+        <span class="lang-fa">ماوایی برای شنود اندیشمندانه</span>
+      </h3>
+      <div class="prose">
+        <div class="lang-en">
+          <p>Welcome to a home for thoughtful listening, meaningful learning, and cultural exploration.</p>
+          <p>This platform brings together a growing collection of professionally produced podcasts in monolingual, bilingual, and trilingual formats, designed to make knowledge more accessible across languages and cultures. The programs cover a wide range of subjects, including English language education, English literature, world literature, literary criticism, creative writing, history, philosophy, culture, and cultural heritage.</p>
+          <p>Each series is carefully researched and produced with the goal of combining academic integrity with engaging storytelling. More than a podcast archive, this platform serves as a meeting place where languages, ideas, and cultures come together through the power of voice.</p>
+        </div>
+        <div class="lang-fa">
+          <p>خوش آمدید به ماوایی برای شنود اندیشمندانه، آموختن ژرف و جست‌وجو در گستره فرهنگ.</p>
+          <p>این پایگاه، مجموعه‌ای رو به فزونی از پادکست‌های حرفه‌ای را در قالب‌های تک‌زبانه، دوزبانه و سه‌زبانه گرد هم آورده است تا دانش را در فراخنای زبان‌ها و فرهنگ‌ها، دست‌یافتنی‌تر سازد. برنامه‌های ارائه‌شده، طیف وسیعی از دانش‌پژوهی را در بر می‌گیرد؛ از آموزش زبان انگلیسی، ادبیات انگلیسی و ادبیات جهان گرفته تا نقد ادبی، نویسندگی خلاق، تاریخ، فلسفه، فرهنگ و میراث فرهنگی.</p>
+          <p>هر مجموعه با پژوهشی دقیق و با هدف پیوند میان اصالت آکادمیک و روایت‌گری گیرا، تدوین و تولید شده است. این پایگاه، بیش از آن‌که آرشیوی از پادکست باشد، میعادگاهی است که در آن، زبان‌ها، ایده‌ها و فرهنگ‌ها، به مدد جادوی صدا، به هم می‌رسند.</p>
+        </div>
+      </div>
+    </div>
+    <div id="about-author">
+      <span class="tag">
+        <span class="lang-en">About the Author</span>
+        <span class="lang-fa">در باب نویسنده</span>
+      </span>
+      <h3>
+        <span class="lang-en">Roham Saeedi</span>
+        <span class="lang-fa">رهام سعیدی</span>
+      </h3>
+      <div class="prose">
+        <div class="lang-en">
+          <p>Roham Saeedi is an English language educator, literary scholar, writer, and podcast producer. His work focuses on the intersection of language, literature, education, and culture, with an emphasis on making academic knowledge accessible through high-quality audio productions.</p>
+          <p>His podcast portfolio includes monolingual, bilingual, and trilingual series exploring English language learning, English and world literature, literary criticism, creative writing, philosophy, history, and cultural heritage.</p>
+          <p>In addition to podcasting, his academic and educational work includes curriculum development, instructional content creation, and participation in cultural and educational initiatives.</p>
+        </div>
+        <div class="lang-fa">
+          <p>رهام سعیدی، آموزگار زبان انگلیسی، پژوهشگر ادبی، نویسنده و تولیدکننده پادکست است. کانون فعالیت او بر تلاقی زبان، ادبیات، آموزش و فرهنگ متمرکز است و در پی آن است که دانش آکادمیک را از رهگذر تولیدات صوتی فاخر، به عرصه دسترس همگان درآورد.</p>
+          <p>کارنامه پادکستی او شامل مجموعه‌های تک‌زبانه، دوزبانه و سه‌زبانه است که به کاوش در قلمروهای آموزش زبان انگلیسی، ادبیات انگلیسی و جهان، نقد ادبی، نویسندگی خلاق، فلسفه، تاریخ و میراث فرهنگی می‌پردازد.</p>
+          <p>افزون بر پادکست، فعالیت‌های علمی و آموزشی او شامل تدوین برنامه‌های درسی، تولید محتوای آموزشی و مشارکت در کنش‌های فرهنگی و تربیتی است.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="episodes" class="reveal">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">
+        <span class="lang-en">Listen</span>
+        <span class="lang-fa">شنیدن</span>
+      </span>
+      <h2>
+        <span class="lang-en">Episodes</span>
+        <span class="lang-fa">قسمت‌ها</span>
+      </h2>
+    </div>
+
+    <div class="episode-group" id="ep-group-1">
+      <div class="eg-head">
+        <span class="eg-dot" style="background:var(--c1);"></span>
+        <h3>
+          <span class="lang-en">I · Philosophical Reflections</span>
+          <span class="lang-fa">فصل یکم · تأملات فلسفی</span>
+        </h3>
+      </div>
+      <div class="episode">
+        <div class="ep-num" style="background:var(--c1);">01</div>
+        <div class="episode-body">
+          <div class="episode-title">
+            <span class="lang-en">Train of Memories</span>
+            <span class="lang-fa">قطار خاطرات</span>
+          </div>
+          <div class="episode-desc">
+            <span class="lang-en">Yet without an absence, there are no memories; and without memories, it is as though nothing exists at all.</span>
+            <span class="lang-fa">اما، جای خالی که نباشد، خاطرات هم نیستند؛ خاطرات که نباشند، اصلا انگار هیچ چیز نیست.</span>
+          </div>
+          <div class="episode-controls">
+            <audio controls preload="none" src="audio/philosophy-ep01.mp3"></audio>
+            <a class="dl-link" href="audio/philosophy-ep01.mp3" download>
+              <span class="lang-en">Download</span>
+              <span class="lang-fa">دریافت</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="episode">
+        <div class="ep-num" style="background:var(--c1);">02</div>
+        <div class="episode-body">
+          <div class="episode-title">
+            <span class="lang-en">A Piece of Peace</span>
+            <span class="lang-fa">قطعه‌ای از آرامش</span>
+          </div>
+          <div class="episode-desc">
+            <span class="lang-en">This life may be a brief chapter. But it is not the final page.</span>
+            <span class="lang-fa">این زندگی شاید فصلی کوتاه باشد؛ اما صفحه‌ی پایانی نیست.</span>
+          </div>
+          <div class="episode-controls">
+            <audio controls preload="none" src="audio/philosophy-ep02.mp3"></audio>
+            <a class="dl-link" href="audio/philosophy-ep02.mp3" download>
+              <span class="lang-en">Download</span>
+              <span class="lang-fa">دریافت</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="episode-group" id="ep-group-2">
+      <div class="eg-head">
+        <span class="eg-dot" style="background:var(--c2);"></span>
+        <h3>
+          <span class="lang-en">II · Ink and Immortality — Season 1: The Tale of Immortality</span>
+          <span class="lang-fa">فصل دوم · جوهر و جاودانگی — فصل نخست: روایت جاودانگی</span>
+        </h3>
+      </div>
+      <div class="episode">
+        <div class="ep-num" style="background:var(--c2);">01</div>
+        <div class="episode-body">
+          <div class="episode-title">
+            <span class="lang-en">Episode I — William Shakespeare</span>
+            <span class="lang-fa">قسمت اول — ویلیام شکسپیر</span>
+          </div>
+          <div class="episode-controls">
+            <audio controls preload="none" src="audio/immortality-s1-ep01.mp3"></audio>
+            <a class="dl-link" href="audio/immortality-s1-ep01.mp3" download>
+              <span class="lang-en">Download</span>
+              <span class="lang-fa">دریافت</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="episode-group" id="ep-group-3">
+      <div class="eg-head">
+        <span class="eg-dot" style="background:var(--c2);"></span>
+        <h3>
+          <span class="lang-en">II · Ink and Immortality — Season 2: Echoes of Imagination</span>
+          <span class="lang-fa">فصل دوم · جوهر و جاودانگی — فصل دوم: پژواک‌های خیال</span>
+        </h3>
+      </div>
+      <div class="eg-note">
+        <span class="lang-en">One episode currently available — more to come.</span>
+        <span class="lang-fa">یک قسمت در حال حاضر منتشر شده — قسمت‌های بیشتر به‌زودی.</span>
+      </div>
+      <div class="episode" style="margin-top:12px;">
+        <div class="ep-num" style="background:var(--c2);">01</div>
+        <div class="episode-body">
+          <div class="episode-title">
+            <span class="lang-en">Episode I — Daniel Defoe</span>
+            <span class="lang-fa">قسمت اول — دنیل دفو</span>
+          </div>
+          <div class="episode-controls">
+            <audio controls preload="none" src="audio/immortality-s2-ep01.mp3"></audio>
+            <a class="dl-link" href="audio/immortality-s2-ep01.mp3" download>
+              <span class="lang-en">Download</span>
+              <span class="lang-fa">دریافت</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="episode-group" id="ep-group-4">
+      <div class="eg-head">
+        <span class="eg-dot" style="background:var(--c3);"></span>
+        <h3>
+          <span class="lang-en">III · Islamic World Studies</span>
+          <span class="lang-fa">فصل سوم · مطالعات جهان اسلام</span>
+        </h3>
+      </div>
+      <div class="episode">
+        <div class="ep-num" style="background:var(--c3);">01</div>
+        <div class="episode-body">
+          <div class="episode-title">
+            <span class="lang-en">Al-Khwarizmi</span>
+            <span class="lang-fa">خوارزمی</span>
+          </div>
+          <div class="episode-controls">
+            <audio controls preload="none" src="audio/islamic-studies-ep01.mp3"></audio>
+            <a class="dl-link" href="audio/islamic-studies-ep01.mp3" download>
+              <span class="lang-en">Download</span>
+              <span class="lang-fa">دریافت</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="foot-name">
+          <span class="lang-en">Roham Saeedi</span>
+          <span class="lang-fa">رهام سعیدی</span>
+        </div>
+        <div class="foot-tag">
+          <span class="lang-en">English language educator · literary scholar · writer · podcast producer</span>
+          <span class="lang-fa">آموزگار زبان انگلیسی · پژوهشگر ادبی · نویسنده · تولیدکننده پادکست</span>
+        </div>
+      </div>
+      <div class="foot-links">
+        <a href="#about-platform"><span class="lang-en">About</span><span class="lang-fa">درباره</span></a>
+        <a href="#collections"><span class="lang-en">Collections</span><span class="lang-fa">مجموعه‌ها</span></a>
+        <a href="#episodes"><span class="lang-en">Episodes</span><span class="lang-fa">قسمت‌ها</span></a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span class="lang-en">© 2026 Roham Saeedi. All rights reserved.</span>
+      <span class="lang-fa">© ۲۰۲۶ رهام سعیدی. تمامی حقوق محفوظ است.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var body = document.body;
+    var htmlEl = document.getElementById('html-root');
+    var toggle = document.getElementById('lang-toggle');
+    function setLang(fa){
+      body.classList.toggle('show-fa', fa);
+      body.classList.toggle('show-en', !fa);
+      htmlEl.setAttribute('lang', fa ? 'fa' : 'en');
+      htmlEl.setAttribute('dir', fa ? 'rtl' : 'ltr');
+    }
+    toggle.addEventListener('click', function(){
+      setLang(!body.classList.contains('show-fa'));
+    });
+    if ('IntersectionObserver' in window){
+      var obs = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if (e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); }
+        });
+      }, { threshold: 0.08 });
+      document.querySelectorAll('.reveal').forEach(function(el){ obs.observe(el); });
+    } else {
+      document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+    }
+  })();
+</script>
+
+</body>
+</html>
