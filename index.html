@@ -214,14 +214,29 @@
   }
   .coll-card:hover{ border-color:var(--indigo); box-shadow:0 8px 24px rgba(35,8,90,0.1); }
   .coll-cover{
-    height:120px; display:flex; align-items:center; justify-content:center;
-    font-family:'Archivo', sans-serif; font-weight:800; font-size:2.2rem; color:#fff;
+    aspect-ratio:4/3; position:relative; overflow:hidden;
+    background-size:cover; background-position:center;
   }
-  .coll-card.c1 .coll-cover{ background:var(--c1); }
-  .coll-card.c2 .coll-cover{ background:var(--c2); }
-  .coll-card.c3 .coll-cover{ background:var(--c3); }
+  .coll-cover::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(to bottom, transparent 55%, #fff 100%);
+  }
+  .coll-cover img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .coll-card.c1 .coll-cover{ background-color:var(--c1); }
+  .coll-card.c2 .coll-cover{ background-color:var(--c2); }
+  .coll-card.c3 .coll-cover{ background-color:var(--c3); }
+  .coll-numeral{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:26px; height:26px; border-radius:50%;
+    font-family:'Archivo', sans-serif; font-weight:800; font-size:0.82rem;
+    color:#fff; flex-shrink:0; margin-inline-end:8px;
+  }
+  .coll-card.c1 .coll-numeral{ background:var(--c1); }
+  .coll-card.c2 .coll-numeral{ background:var(--c2); }
+  .coll-card.c3 .coll-numeral{ background:var(--c3); }
+  .coll-kicker-row{ display:flex; align-items:center; margin-bottom:8px; }
   .coll-body{ padding:22px 22px 26px; flex:1; display:flex; flex-direction:column; }
-  .coll-kicker{ font-size:0.76rem; font-weight:600; letter-spacing:0.05em; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
+  .coll-kicker{ font-size:0.76rem; font-weight:600; letter-spacing:0.05em; text-transform:uppercase; color:var(--muted); }
   body.show-fa .coll-kicker{ letter-spacing:0; }
   .coll-body h3{ font-size:1.2rem; margin-bottom:10px; }
   .coll-body p{ font-size:0.94rem; color:var(--muted); margin:0 0 16px; flex:1; }
@@ -380,14 +395,17 @@
     </div>
     <div class="coll-grid">
       <div class="coll-card c1">
-        <div class="coll-cover">I</div>
+        <div class="coll-cover"><img src="covers/unseen-horizon.jpg" alt="The Unseen Horizon"></div>
         <div class="coll-body">
-          <div class="coll-kicker">
-            <span class="lang-en">Monolingual — Persian or English</span>
-            <span class="lang-fa">تک‌زبانه — فارسی یا انگلیسی</span>
+          <div class="coll-kicker-row">
+            <span class="coll-numeral">I</span>
+            <div class="coll-kicker">
+              <span class="lang-en">Monolingual — Persian or English</span>
+              <span class="lang-fa">تک‌زبانه — فارسی یا انگلیسی</span>
+            </div>
           </div>
           <h3>
-            <span class="lang-en">Philosophical Reflections</span>
+            <span class="lang-en">The Unseen Horizon</span>
             <span class="lang-fa">تأملات فلسفی</span>
           </h3>
           <p>
@@ -401,11 +419,14 @@
         </div>
       </div>
       <div class="coll-card c2">
-        <div class="coll-cover">II</div>
+        <div class="coll-cover"><img src="covers/ink-immortality.jpg" alt="Ink and Immortality"></div>
         <div class="coll-body">
-          <div class="coll-kicker">
-            <span class="lang-en">Monolingual English</span>
-            <span class="lang-fa">تک‌زبانه انگلیسی</span>
+          <div class="coll-kicker-row">
+            <span class="coll-numeral">II</span>
+            <div class="coll-kicker">
+              <span class="lang-en">Monolingual English</span>
+              <span class="lang-fa">تک‌زبانه انگلیسی</span>
+            </div>
           </div>
           <h3>
             <span class="lang-en">Ink and Immortality</span>
@@ -422,14 +443,17 @@
         </div>
       </div>
       <div class="coll-card c3">
-        <div class="coll-cover">III</div>
+        <div class="coll-cover"><img src="covers/living-heritage.jpg" alt="Living Heritage"></div>
         <div class="coll-body">
-          <div class="coll-kicker">
-            <span class="lang-en">Bilingual &amp; Trilingual</span>
-            <span class="lang-fa">دوزبانه و سه‌زبانه</span>
+          <div class="coll-kicker-row">
+            <span class="coll-numeral">III</span>
+            <div class="coll-kicker">
+              <span class="lang-en">Bilingual &amp; Trilingual</span>
+              <span class="lang-fa">دوزبانه و سه‌زبانه</span>
+            </div>
           </div>
           <h3>
-            <span class="lang-en">Islamic World Studies</span>
+            <span class="lang-en">Living Heritage</span>
             <span class="lang-fa">مطالعات جهان اسلام</span>
           </h3>
           <p>
@@ -512,7 +536,7 @@
       <div class="eg-head">
         <span class="eg-dot" style="background:var(--c1);"></span>
         <h3>
-          <span class="lang-en">I · Philosophical Reflections</span>
+          <span class="lang-en">I · The Unseen Horizon</span>
           <span class="lang-fa">فصل یکم · تأملات فلسفی</span>
         </h3>
       </div>
@@ -618,7 +642,7 @@
       <div class="eg-head">
         <span class="eg-dot" style="background:var(--c3);"></span>
         <h3>
-          <span class="lang-en">III · Islamic World Studies</span>
+          <span class="lang-en">III · Living Heritage</span>
           <span class="lang-fa">فصل سوم · مطالعات جهان اسلام</span>
         </h3>
       </div>
