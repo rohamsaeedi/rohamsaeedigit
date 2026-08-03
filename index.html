@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>رهام سعیدی | Roham Saeedi</title>
-<link rel="icon" type="image/png" sizes="512x512" href="favicon.png">
-<link rel="shortcut icon" href="favicon.png">
-<link rel="apple-touch-icon" href="favicon.png">
+<link rel="icon" type="image/png" sizes="512x512" href="Favicon.png">
+<link rel="shortcut icon" href="Favicon.png">
+<link rel="apple-touch-icon" href="Favicon.png">
 <meta name="description" content="Roham Saeedi — English language educator, literary scholar, writer, and podcast producer. Philosophical reflections, Ink and Immortality, and bilingual Islamic world studies podcasts.">
 <meta name="author" content="Roham Saeedi">
 <meta property="og:type" content="website">
@@ -99,10 +99,10 @@
   .nav-links{ display:flex; align-items:center; gap:26px; }
   .nav-links a{ font-size:0.92rem; font-weight:500; color:var(--ink); position:relative; padding-bottom:4px; }
   .nav-links a::after{
-    content:""; position:absolute; left:0; right:100%; bottom:0; height:2px;
-    background:var(--indigo); transition:right 0.25s ease;
+    content:""; position:absolute; inset-inline-start:0; inset-inline-end:100%; bottom:0; height:2px;
+    background:var(--indigo); transition:inset-inline-end 0.25s ease;
   }
-  .nav-links a:hover::after{ right:0; }
+  .nav-links a:hover::after{ inset-inline-end:0; }
   .nav-links a:hover{ color:var(--indigo); }
   @media (max-width:760px){ .nav-links a.hide-mobile{ display:none; } }
   #lang-toggle{
@@ -119,7 +119,7 @@
     overflow:hidden;
   }
   .hero .inner{
-    display:block; text-align:left; position:relative; z-index:2;
+    display:block; text-align:start; position:relative; z-index:2;
     padding-bottom:44px;
   }
   .hero h1{
@@ -171,7 +171,7 @@
     background:linear-gradient(to bottom, transparent 55%, var(--indigo) 100%);
   }
   @media (max-width:820px){
-    .hero .inner{ text-align:left; }
+    .hero .inner{ text-align:start; }
   }
 
   @media (prefers-reduced-motion: no-preference){
@@ -268,6 +268,13 @@
   .coll-body{ padding:22px 22px 26px; flex:1; display:flex; flex-direction:column; }
   .coll-kicker{ font-size:0.76rem; font-weight:600; letter-spacing:0.05em; text-transform:uppercase; color:var(--muted); }
   body.show-fa .coll-kicker{ letter-spacing:0; }
+  .coll-langs{
+    font-size:0.72rem; font-weight:500; letter-spacing:0.04em; color:var(--gold);
+    margin:2px 0 10px; text-transform:uppercase;
+  }
+  body.show-fa .coll-langs{ letter-spacing:0; text-transform:none; }
+  .coll-credit{ font-size:0.86rem; color:var(--muted); font-style:italic; margin-top:10px !important; padding-top:10px; border-top:1px solid var(--border); }
+  body.show-fa .coll-credit{ font-style:normal; }
   .coll-body h3{ font-size:1.2rem; margin-bottom:10px; }
   .coll-body p{ font-size:0.94rem; color:var(--muted); margin:0 0 16px; flex:1; }
   .coll-link{ font-size:0.88rem; font-weight:600; color:var(--indigo); }
@@ -444,8 +451,8 @@
         <span class="lang-fa">مجموعه‌ها</span>
       </h2>
       <p>
-        <span class="lang-en">Each collection has its own voice, language, and purpose.</span>
-        <span class="lang-fa">هر مجموعه صدا، زبان و هدف خود را دارد.</span>
+        <span class="lang-en">Each collection has its own voice, vision, and purpose.</span>
+        <span class="lang-fa">هر مجموعه، صدا، دیدگاه و هدف خاص خود را دارد.</span>
       </p>
     </div>
     <div class="coll-grid">
@@ -455,8 +462,8 @@
           <div class="coll-kicker-row">
             <span class="coll-numeral">I</span>
             <div class="coll-kicker">
-              <span class="lang-en">Monolingual — Persian or English</span>
-              <span class="lang-fa">تک‌زبانه — فارسی یا انگلیسی</span>
+              <span class="lang-en">Monolingual | Persian or English</span>
+              <span class="lang-fa">تک‌زبانه | فارسی یا انگلیسی</span>
             </div>
           </div>
           <h3>
@@ -464,8 +471,8 @@
             <span class="lang-fa">افق نادیده</span>
           </h3>
           <p>
-            <span class="lang-en">Independent episodes on life, mortality, and the nature of the human being.</span>
-            <span class="lang-fa">قسمت‌های مستقل در باب زندگی، مرگ و ماهیت انسان.</span>
+            <span class="lang-en">Unseen Horizon is an anthology of independent reflections on the mysteries of existence. Through the meeting point of philosophy, literature, psychology, and the human imagination, each episode journeys beyond the visible world to explore life, death, identity, consciousness, memory, and the enduring search for meaning. It is a space for thoughtful minds; a quiet invitation to look beyond certainty and discover the unseen horizons of the human spirit.</span>
+            <span class="lang-fa">افق نادیده، مجموعه‌ای است از جستارهای مستقل پیرامون اسرار هستی. در تلاقی‌گاه فلسفه، ادبیات، روان‌شناسی و خیال بشری، هر قسمت، سفری است فراتر از جهان دیدنی‌ها؛ برای کاویدن زندگی، مرگ، هویت، آگاهی، حافظه و آن جست‌وجوی بی‌پایان برای یافتن معنا. اینجا، مأمنی است برای اندیشمندان؛ دعوتی است خاموش برای آنکه فراتر از یقین‌ها بنگریم و افق‌های نادیده‌ی جان آدمی را بازشناسیم.</span>
           </p>
           <a class="coll-link" href="#ep-group-1">
             <span class="lang-en">View episodes →</span>
@@ -479,8 +486,8 @@
           <div class="coll-kicker-row">
             <span class="coll-numeral">II</span>
             <div class="coll-kicker">
-              <span class="lang-en">Monolingual English</span>
-              <span class="lang-fa">تک‌زبانه انگلیسی</span>
+              <span class="lang-en">Monolingual | English</span>
+              <span class="lang-fa">تک‌زبانه | انگلیسی</span>
             </div>
           </div>
           <h3>
@@ -488,8 +495,12 @@
             <span class="lang-fa">جوهر و جاودانگی</span>
           </h3>
           <p>
-            <span class="lang-en">On the prominent figures of English literary history, across two seasons.</span>
-            <span class="lang-fa">در باب شخصیت‌های برجسته تاریخ ادبیات انگلیسی، در دو فصل.</span>
+            <span class="lang-en">Ink and Immortality is a documentary podcast series celebrating the enduring legacy of the world's greatest poets and writers. Through carefully crafted narratives, literary insight, and historical context, each episode explores the lives, works, ideas, and cultural impact of the voices that continue to shape human thought across generations. More than a journey through literary history, the series is a tribute to the timeless power of words and to the remarkable individuals who found immortality through the ink they left behind.</span>
+            <span class="lang-fa">جوهر و جاودانگی، مجموعه‌ی پادکستی مستند است که میراث ماندگار بزرگ‌ترین شاعران و نویسندگان جهان را پاس می‌دارد. این مجموعه از طریق روایت‌هایی دقیق، بینش ادبی و زمینه‌های تاریخی، در هر قسمت به بررسی زندگی، آثار، اندیشه‌ها و تأثیر فرهنگی صداهایی می‌پردازد که همچنان در گذر نسل‌ها، به اندیشه‌ی بشری شکل می‌دهند. این اثر، فراتر از سفری در تاریخ ادبیات، ادای احترامی است به قدرت بی‌زمان واژگان و به انسان‌های شگرفی که از طریق اثر جوهری که از خود به جا گذاشتند، به جاودانگی رسیدند.</span>
+          </p>
+          <p class="coll-credit">
+            <span class="lang-en">The project is developed in collaboration with the English Language and Literature Scientific Association, reflecting a shared commitment to promoting literary appreciation and lifelong learning.</span>
+            <span class="lang-fa">این پروژه با همکاری انجمن علمی زبان و ادبیات انگلیسی توسعه یافته است که نشان‌دهنده‌ی تعهدی مشترک برای ترویج قدرشناسی ادبی و یادگیری مادام‌العمر است.</span>
           </p>
           <a class="coll-link" href="#ep-group-2">
             <span class="lang-en">View episodes →</span>
@@ -507,13 +518,21 @@
               <span class="lang-fa">دوزبانه و سه‌زبانه</span>
             </div>
           </div>
+          <div class="coll-langs">
+            <span class="lang-en">Persian | English | French | Arabic</span>
+            <span class="lang-fa">فارسی | انگلیسی | فرانسه | عربی</span>
+          </div>
           <h3>
             <span class="lang-en">Living Heritage</span>
             <span class="lang-fa">میراث زنده</span>
           </h3>
           <p>
-            <span class="lang-en">Educational programs produced for the Cultural Center for Islamic World Studies.</span>
-            <span class="lang-fa">برنامه‌های آموزشی تولیدشده برای کانون فرهنگی مطالعات جهان اسلام.</span>
+            <span class="lang-en">Living Heritage is a documentary podcast series exploring the rich cultural, scientific, and architectural legacy of the Islamic world. Through immersive storytelling and multilingual narratives, each episode uncovers the lives of influential scholars, the beauty of remarkable monuments, and the enduring traditions that have shaped civilizations across centuries. More than a historical journey, the series reveals a living heritage that continues to inspire the present and illuminate the future.</span>
+            <span class="lang-fa">میراث زنده، مجموعه‌ی پادکستی مستند است که به کاوش در میراث غنی فرهنگی، علمی و معماری جهان اسلام می‌پردازد. این مجموعه از طریق روایت‌هایی فراگیر و داستان‌سرایی‌های چندزبانه، در هر قسمت از زندگی دانشمندان اثرگذار، زیبایی بناهای شگفت‌انگیز و سنت‌های ماندگاری پرده برمی‌دارد که تمدن‌ها را در طول قرن‌ها شکل داده‌اند. این اثر، فراتر از یک سفر تاریخی، میراثی زنده را آشکار می‌کند که همچنان الهام‌بخشِ امروز و روشنگرِ آینده است.</span>
+          </p>
+          <p class="coll-credit">
+            <span class="lang-en">The project is developed in collaboration with the Cultural Center of Islamic World Studies, reflecting a shared commitment to preserving, promoting, and celebrating the intellectual and cultural heritage of the Islamic world.</span>
+            <span class="lang-fa">این پروژه با همکاری کانون فرهنگی مطالعات جهان اسلام توسعه یافته است که نشان‌دهنده‌ی تعهدی مشترک برای حفظ، ترویج و تکریم میراث فکری و فرهنگی جهان اسلام است.</span>
           </p>
           <a class="coll-link" href="#ep-group-4">
             <span class="lang-en">View episodes →</span>
@@ -530,29 +549,33 @@
     <div>
       <span class="tag">
         <span class="lang-en">About the Platform</span>
-        <span class="lang-fa">در باب این پایگاه</span>
+        <span class="lang-fa">در باب این پلتفرم</span>
       </span>
       <h3>
-        <span class="lang-en">A home for thoughtful listening</span>
+        <span class="lang-en">A Home for Thoughtful Listening</span>
         <span class="lang-fa">ماوایی برای شنود اندیشمندانه</span>
       </h3>
       <div class="prose">
         <div class="lang-en">
           <p>Welcome to a home for thoughtful listening, meaningful learning, and cultural exploration.</p>
-          <p>This platform brings together a growing collection of professionally produced podcasts in monolingual, bilingual, and trilingual formats, designed to make knowledge more accessible across languages and cultures. The programs cover a wide range of subjects, including English language education, English literature, world literature, literary criticism, creative writing, history, philosophy, culture, and cultural heritage.</p>
-          <p>Each series is carefully researched and produced with the goal of combining academic integrity with engaging storytelling. More than a podcast archive, this platform serves as a meeting place where languages, ideas, and cultures come together through the power of voice.</p>
+          <p>This platform brings together a growing collection of professionally produced podcast series created to make knowledge, ideas, and stories more accessible across languages and cultures. Through monolingual, bilingual, and trilingual formats, the platform explores a diverse range of subjects, including philosophy, literature, literary criticism, creative expression, history, cultural heritage, education, and the intellectual traditions that have shaped human civilizations.</p>
+          <p>Each collection has its own voice, vision, and purpose. From reflecting on the fundamental questions of human existence, to exploring the lives and works of influential literary figures, to discovering the cultural, architectural, and scientific heritage of the Islamic world, every series offers a unique journey of learning and discovery.</p>
+          <p>Every episode is carefully researched, thoughtfully written, and professionally produced with the aim of combining academic integrity with engaging storytelling. By bringing together scholarship, creativity, and the art of narration, this platform seeks to create a meaningful space where ideas are shared, cultures meet, and knowledge continues to travel beyond boundaries.</p>
+          <p>More than a podcast archive, this platform is a meeting place for curious minds; a space where languages, histories, and perspectives come together through the enduring power of voice.</p>
         </div>
         <div class="lang-fa">
-          <p>خوش آمدید به ماوایی برای شنود اندیشمندانه، آموختن ژرف و جست‌وجو در گستره فرهنگ.</p>
-          <p>این پایگاه، مجموعه‌ای رو به فزونی از پادکست‌های حرفه‌ای را در قالب‌های تک‌زبانه، دوزبانه و سه‌زبانه گرد هم آورده است تا دانش را در فراخنای زبان‌ها و فرهنگ‌ها، دست‌یافتنی‌تر سازد. برنامه‌های ارائه‌شده، طیف وسیعی از دانش‌پژوهی را در بر می‌گیرد؛ از آموزش زبان انگلیسی، ادبیات انگلیسی و ادبیات جهان گرفته تا نقد ادبی، نویسندگی خلاق، تاریخ، فلسفه، فرهنگ و میراث فرهنگی.</p>
-          <p>هر مجموعه با پژوهشی دقیق و با هدف پیوند میان اصالت آکادمیک و روایت‌گری گیرا، تدوین و تولید شده است. این پایگاه، بیش از آن‌که آرشیوی از پادکست باشد، میعادگاهی است که در آن، زبان‌ها، ایده‌ها و فرهنگ‌ها، به مدد جادوی صدا، به هم می‌رسند.</p>
+          <p>خوش آمدید به ماوایی برای شنودِ اندیشمندانه، آموختنِ ژرف و جست‌وجو در گستره‌ی فرهنگ.</p>
+          <p>این پایگاه، مجموعه‌ای رو به فزونی از پادکست‌های حرفه‌ای را گرد هم آورده است تا دانش، ایده‌ها و داستان‌ها را در فراخنای زبان‌ها و فرهنگ‌ها، دست‌یافتنی‌تر سازد. این پلتفرم در قالب‌های تک‌زبانه، دوزبانه و سه‌زبانه، به کاوش در قلمروهای گوناگونی می‌پردازد؛ از فلسفه، ادبیات و نقد ادبی گرفته تا تجلیِ خلاقانه، تاریخ، میراث فرهنگی، آموزش و سنت‌های فکری که تمدن‌های بشری را شکل داده‌اند.</p>
+          <p>هر مجموعه، آوایی، نگاهی و غایتی در خود نهان دارد. از تأمل در پرسش‌های بنیادینِ هستیِ انسان گرفته تا بررسی زندگی و آثارِ چهره‌های اثرگذارِ ادبی، و از کشفِ میراثِ فرهنگی، معماری و علمی جهان اسلام تا تجربه‌ی سفری منحصربه‌فرد در مسیرِ یادگیری و کشف.</p>
+          <p>هر قسمت با پژوهشی دقیق، نگارشی اندیشمندانه و تولیدی حرفه‌ای، با هدفِ پیوند میان اصالتِ آکادمیک و روایت‌گریِ گیرا تدوین شده است. این پایگاه با درهم‌آمیختنِ دانش، خلاقیت و هنرِ روایتگری، در پیِ ایجاد فضایی معنادار است؛ فضایی که در آن ایده‌ها به اشتراک گذاشته می‌شوند، فرهنگ‌ها به هم می‌رسند و دانش، فراتر از مرزها به سفر ادامه می‌دهد.</p>
+          <p>این پایگاه، بیش از آن‌که آرشیوی از پادکست باشد، میعادگاهی است برای ذهن‌های کنجکاو؛ ماوایی که در آن زبان‌ها، تاریخ‌ها و دیدگاه‌ها، به مددِ قدرتِ ماندگارِ صدا، به هم می‌رسند.</p>
         </div>
       </div>
     </div>
     <div id="about-author">
       <span class="tag">
-        <span class="lang-en">About the Author</span>
-        <span class="lang-fa">در باب نویسنده</span>
+        <span class="lang-en">About the Creator</span>
+        <span class="lang-fa">درباره‌ی پدیدآورنده</span>
       </span>
       <h3>
         <span class="lang-en">Roham Saeedi</span>
@@ -560,14 +583,14 @@
       </h3>
       <div class="prose">
         <div class="lang-en">
-          <p>Roham Saeedi is an English language educator, literary scholar, writer, and podcast producer. His work focuses on the intersection of language, literature, education, and culture, with an emphasis on making academic knowledge accessible through high-quality audio productions.</p>
-          <p>His podcast portfolio includes monolingual, bilingual, and trilingual series exploring English language learning, English and world literature, literary criticism, creative writing, philosophy, history, and cultural heritage.</p>
-          <p>In addition to podcasting, his academic and educational work includes curriculum development, instructional content creation, and participation in cultural and educational initiatives.</p>
+          <p>Roham Saeedi is an English language educator, literary researcher, writer, and podcast producer whose work explores the connection between language, literature, education, and culture. Through his academic background and creative projects, he focuses on transforming complex ideas into accessible and engaging narratives for a wider audience.</p>
+          <p>His podcast portfolio includes monolingual, bilingual, and trilingual series covering English language education, English and world literature, literary criticism, philosophy, cultural history, and the heritage of civilizations. Each project reflects a commitment to thoughtful research, meaningful storytelling, and the belief that knowledge becomes more powerful when it can be shared beyond academic boundaries.</p>
+          <p>Alongside podcast production, his work includes educational content development, curriculum design, literary projects, and participation in cultural and academic initiatives. Through the intersection of scholarship, creativity, and voice, he continues to create platforms where languages, ideas, and cultures meet.</p>
         </div>
         <div class="lang-fa">
-          <p>رهام سعیدی، آموزگار زبان انگلیسی، پژوهشگر ادبی، نویسنده و تولیدکننده پادکست است. کانون فعالیت او بر تلاقی زبان، ادبیات، آموزش و فرهنگ متمرکز است و در پی آن است که دانش آکادمیک را از رهگذر تولیدات صوتی فاخر، به عرصه دسترس همگان درآورد.</p>
-          <p>کارنامه پادکستی او شامل مجموعه‌های تک‌زبانه، دوزبانه و سه‌زبانه است که به کاوش در قلمروهای آموزش زبان انگلیسی، ادبیات انگلیسی و جهان، نقد ادبی، نویسندگی خلاق، فلسفه، تاریخ و میراث فرهنگی می‌پردازد.</p>
-          <p>افزون بر پادکست، فعالیت‌های علمی و آموزشی او شامل تدوین برنامه‌های درسی، تولید محتوای آموزشی و مشارکت در کنش‌های فرهنگی و تربیتی است.</p>
+          <p>رهام سعیدی، مدرسِ زبانِ انگلیسی، پژوهشگرِ ادبیات، نویسنده و پدیدآورنده‌ی پادکست است که در آثارِ خود، به کاوش در پیوند میانِ زبان، ادبیات، آموزش و فرهنگ می‌پردازد. او با تکیه بر پیشینه‌ی آکادمیک و پروژه‌های خلاقانه‌ی خویش، بر تبدیلِ اندیشه‌های پیچیده به روایت‌هایی دسترس‌پذیر و گیرا برای طیفِ گسترده‌ای از شنوندگان تمرکز دارد.</p>
+          <p>مجموعه‌ی پادکست‌های او شاملِ مجموعه‌های تک‌زبانه، دوزبانه و سه‌زبانه است که قلمروهایی چون آموزشِ زبانِ انگلیسی، ادبیاتِ انگلیسی و جهان، نقدِ ادبی، فلسفه، تاریخِ فرهنگی و میراثِ تمدن‌ها را در بر می‌گیرد. هر پروژه، بازتابی از تعهدِ او به پژوهشِ ژرف، روایت‌گریِ معنادار و این باور است که دانش، زمانی قدرتمندتر می‌شود که بتوان آن را فراتر از مرزهای آکادمیک به اشتراک گذاشت.</p>
+          <p>فعالیت‌های او در کنارِ تولیدِ پادکست، شاملِ تدوینِ محتوای آموزشی، طراحیِ برنامه‌های درسی، پروژه‌های ادبی و مشارکت در ابتکاراتِ فرهنگی و دانشگاهی است. او با پیوند دادنِ پژوهش، خلاقیت و هنرِ صدا، همچنان در پیِ خلقِ ماواهایی است که در آن، زبان‌ها، ایده‌ها و فرهنگ‌ها به هم می‌رسند.</p>
         </div>
       </div>
     </div>
