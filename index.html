@@ -185,17 +185,47 @@
   @keyframes lineIn{ to{ opacity:1; transform:translateY(0); } }
 
   /* STATS */
-  .stats-bar{ background:var(--indigo); padding:26px 0; }
-  .stats-bar .inner{
-    display:grid; grid-template-columns:repeat(3,1fr); gap:16px; text-align:center;
+  .stats-bar{ background:var(--indigo); padding:44px 0 40px; }
+  .stats-eyebrow{
+    text-align:center; font-size:0.78rem; font-weight:600; letter-spacing:0.1em;
+    text-transform:uppercase; color:var(--gold); margin-bottom:28px;
   }
-  @media (max-width:600px){ .stats-bar .inner{ grid-template-columns:1fr; gap:20px; } }
+  body.show-fa .stats-eyebrow{ letter-spacing:0; }
+  .stats-row{
+    display:flex; justify-content:center; align-items:stretch; gap:0;
+    margin-bottom:36px; flex-wrap:wrap;
+  }
+  .stat-coll{
+    flex:1; min-width:140px; text-align:center; padding:0 28px;
+    border-inline-start:1px solid rgba(255,255,255,0.15);
+  }
+  .stat-coll:first-child{ border-inline-start:none; }
+  @media (max-width:640px){
+    .stat-coll{ border-inline-start:none; border-top:1px solid rgba(255,255,255,0.15); padding:20px 10px 0; }
+    .stat-coll:first-child{ border-top:none; padding-top:0; }
+    .stats-row{ flex-direction:column; gap:4px; }
+  }
+  .stat-coll-name{
+    font-family:'Archivo', sans-serif; font-weight:700; font-size:0.98rem;
+    color:#fff; margin-bottom:10px; line-height:1.3;
+  }
+  html[lang="fa"] .stat-coll-name, body.show-fa .stat-coll-name{ font-family:'Vazirmatn', sans-serif; }
+  .stat-mini-num{
+    font-family:'Archivo', sans-serif; font-weight:800; color:var(--gold);
+    font-size:clamp(1.9rem, 4vw, 2.6rem); line-height:1;
+  }
+  html[lang="fa"] .stat-mini-num, body.show-fa .stat-mini-num{ font-family:'Vazirmatn', sans-serif; }
+  .stat-coll-label{ font-size:0.76rem; color:rgba(255,255,255,0.6); margin-top:4px; }
+
+  .stats-total{
+    text-align:center; padding-top:32px; border-top:1px solid rgba(255,255,255,0.18);
+  }
   .stat-num{
     font-family:'Archivo', sans-serif; font-weight:800; color:#fff;
-    font-size:clamp(2.6rem, 6vw, 5rem); line-height:1;
+    font-size:clamp(2.6rem, 6vw, 4.4rem); line-height:1;
   }
   html[lang="fa"] .stat-num, body.show-fa .stat-num{ font-family:'Vazirmatn', sans-serif; }
-  .stat-label{ font-size:0.8rem; font-weight:400; color:rgba(255,255,255,0.7); margin-top:6px; }
+  .stat-label{ font-size:0.85rem; font-weight:400; color:rgba(255,255,255,0.75); margin-top:8px; }
 
   /* SECTION HEAD */
   section{ padding:64px 0; }
@@ -324,22 +354,22 @@
   <div class="wrap inner">
     <span class="tag">
       <span class="lang-en">Podcast Platform</span>
-      <span class="lang-fa">پایگاه پادکست</span>
+      <span class="lang-fa">پلتفرم پادکست</span>
     </span>
     <h1>
       <span class="hline">
         <span class="lang-en">Every language carries a different way of seeing.</span>
-        <span class="lang-fa">فراتر از زبان سخن می‌گوییم؛</span>
+        <span class="lang-fa">هر زبان، دریچه‌ای‌ست نو به تماشای جهان</span>
       </span>
     </h1>
     <p class="lede">
       <span class="lang-en">This is where those ways meet: essays, conversations, and readings across Persian and English, made for those who read to grow, not merely to pass the time.</span>
-      <span class="lang-fa">رهام سعیدی — آموزگار زبان انگلیسی، پژوهشگر ادبی، نویسنده و تولیدکننده پادکست؛ دانش آکادمیک را از رهگذر تولیدات صوتی دوزبانه و سه‌زبانه به گوش جان می‌رساند.</span>
+      <span class="lang-fa">اینجاست که شیوه‌های نگریستن به یکدیگر می‌رسند: جستارها، گفت‌وگوها و خوانش‌هایی به فارسی و انگلیسی؛ برای آنان که می‌خوانند تا رشد کنند، نه صرفاً برای گذران وقت.</span>
     </p>
     <div class="cta-row">
       <a href="#episodes" class="cta-btn">
         <span class="lang-en">Begin listening</span>
-        <span class="lang-fa">اکنون بشنوید</span>
+        <span class="lang-fa">آغاز شنیدن</span>
       </a>
       <div class="wave-pulse" aria-hidden="true">
         <span></span><span></span><span></span><span></span><span></span>
@@ -347,31 +377,56 @@
     </div>
   </div>
   <div class="hero-media">
-    <img src="roham-seal.jpg" alt="Roham Saeedi">
+    <img src="roham-seal.jpg" alt="Roham Saeedi | رهام سعیدی">
   </div>
 </section>
 
 <div class="stats-bar reveal">
-  <div class="wrap inner">
-    <div>
-      <div class="stat-num" data-target="3">0</div>
-      <div class="stat-label">
-        <span class="lang-en">Podcast Collections</span>
-        <span class="lang-fa">مجموعه پادکست</span>
+  <div class="wrap">
+    <div class="stats-eyebrow">
+      <span class="lang-en">Three Podcast Collections</span>
+      <span class="lang-fa">سه مجموعه پادکست</span>
+    </div>
+    <div class="stats-row">
+      <div class="stat-coll sc1">
+        <div class="stat-coll-name">
+          <span class="lang-en">The Unseen Horizon</span>
+          <span class="lang-fa">افق نادیده</span>
+        </div>
+        <div class="stat-mini-num" data-target="2">0</div>
+        <div class="stat-coll-label">
+          <span class="lang-en">Episodes</span>
+          <span class="lang-fa">قسمت</span>
+        </div>
+      </div>
+      <div class="stat-coll sc2">
+        <div class="stat-coll-name">
+          <span class="lang-en">Ink and Immortality</span>
+          <span class="lang-fa">جوهر و جاودانگی</span>
+        </div>
+        <div class="stat-mini-num" data-target="2">0</div>
+        <div class="stat-coll-label">
+          <span class="lang-en">Episodes</span>
+          <span class="lang-fa">قسمت</span>
+        </div>
+      </div>
+      <div class="stat-coll sc3">
+        <div class="stat-coll-name">
+          <span class="lang-en">Living Heritage</span>
+          <span class="lang-fa">میراث زنده</span>
+        </div>
+        <div class="stat-mini-num" data-target="1">0</div>
+        <div class="stat-coll-label">
+          <span class="lang-en">Episode</span>
+          <span class="lang-fa">قسمت</span>
+        </div>
       </div>
     </div>
-    <div>
-      <div class="stat-num" data-target="2">0</div>
+    <div class="stats-total">
+      <div class="stat-num" data-target="5">0</div>
       <div class="stat-label">
-        <span class="lang-en">Languages, with a third joining in</span>
-        <span class="lang-fa">زبان، به همراه زبانی سوم</span>
-      </div>
-    </div>
-    <div>
-      <div class="stat-num" data-target="5" data-suffix="+">0</div>
-      <div class="stat-label">
-        <span class="lang-en">Episodes and growing</span>
-        <span class="lang-fa">قسمت منتشرشده و در حال افزایش</span>
+        <span class="lang-en">All Podcasts</span>
+        <span class="lang-fa">تعداد کل پادکست‌ها</span>
       </div>
     </div>
   </div>
@@ -395,7 +450,7 @@
     </div>
     <div class="coll-grid">
       <div class="coll-card c1">
-        <div class="coll-cover"><img src="unseen-horizon.jpg" alt="The Unseen Horizon"></div>
+        <div class="coll-cover"><img src="unseen-horizon.jpg" alt="The Unseen Horizon | افق نادیده"></div>
         <div class="coll-body">
           <div class="coll-kicker-row">
             <span class="coll-numeral">I</span>
@@ -406,7 +461,7 @@
           </div>
           <h3>
             <span class="lang-en">The Unseen Horizon</span>
-            <span class="lang-fa">تأملات فلسفی</span>
+            <span class="lang-fa">افق نادیده</span>
           </h3>
           <p>
             <span class="lang-en">Independent episodes on life, mortality, and the nature of the human being.</span>
@@ -419,7 +474,7 @@
         </div>
       </div>
       <div class="coll-card c2">
-        <div class="coll-cover"><img src="ink-immortality.jpg" alt="Ink and Immortality"></div>
+        <div class="coll-cover"><img src="ink-immortality.jpg" alt="Ink and Immortality | جوهر و جاودانگی"></div>
         <div class="coll-body">
           <div class="coll-kicker-row">
             <span class="coll-numeral">II</span>
@@ -443,7 +498,7 @@
         </div>
       </div>
       <div class="coll-card c3">
-        <div class="coll-cover"><img src="living-heritage.jpg" alt="Living Heritage"></div>
+        <div class="coll-cover"><img src="living-heritage.jpg" alt="Living Heritage | میراث زنده"></div>
         <div class="coll-body">
           <div class="coll-kicker-row">
             <span class="coll-numeral">III</span>
@@ -454,7 +509,7 @@
           </div>
           <h3>
             <span class="lang-en">Living Heritage</span>
-            <span class="lang-fa">مطالعات جهان اسلام</span>
+            <span class="lang-fa">میراث زنده</span>
           </h3>
           <p>
             <span class="lang-en">Educational programs produced for the Cultural Center for Islamic World Studies.</span>
@@ -537,7 +592,7 @@
         <span class="eg-dot" style="background:var(--c1);"></span>
         <h3>
           <span class="lang-en">I · The Unseen Horizon</span>
-          <span class="lang-fa">فصل یکم · تأملات فلسفی</span>
+          <span class="lang-fa">فصل یکم · افق نادیده</span>
         </h3>
       </div>
       <div class="episode">
@@ -643,7 +698,7 @@
         <span class="eg-dot" style="background:var(--c3);"></span>
         <h3>
           <span class="lang-en">III · Living Heritage</span>
-          <span class="lang-fa">فصل سوم · مطالعات جهان اسلام</span>
+          <span class="lang-fa">فصل سوم · میراث زنده</span>
         </h3>
       </div>
       <div class="episode">
@@ -723,7 +778,7 @@
     function countUp(){
       if (counted) return;
       counted = true;
-      document.querySelectorAll('.stat-num').forEach(function(el){
+      document.querySelectorAll('.stat-num, .stat-mini-num').forEach(function(el){
         var target = parseInt(el.getAttribute('data-target'), 10) || 0;
         var suffix = el.getAttribute('data-suffix') || '';
         var start = null;
