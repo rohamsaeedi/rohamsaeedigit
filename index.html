@@ -362,56 +362,106 @@
   }
   .dl-link:hover{ background:var(--indigo-deep); }
 
-  /* CUSTOM PLAYER */
-  .player{
-    display:flex; align-items:center; gap:12px;
-    flex:1; min-width:200px; max-width:320px;
+  /* ALBUM WIDGET */
+  .album-widget{
+    border:1px solid var(--border); border-radius:var(--radius);
+    overflow:hidden; background:#fff;
   }
-  .play-btn{
-    flex-shrink:0; width:38px; height:38px; border-radius:50%;
+  .album-tabs{
+    display:flex; background:var(--bg-soft); border-bottom:1px solid var(--border);
+    overflow-x:auto;
+  }
+  .album-tab{
+    flex:1; min-width:140px; padding:16px 14px; text-align:center;
+    font-family:'Archivo', sans-serif; font-weight:700; font-size:0.88rem;
+    background:transparent; border:none; cursor:pointer; color:var(--muted);
+    white-space:nowrap; box-shadow:inset 0 -3px 0 transparent;
+    transition:color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  }
+  html[lang="fa"] .album-tab, body.show-fa .album-tab{ font-family:'Vazirmatn', sans-serif; }
+  .album-tab:hover{ color:var(--ink); }
+  .album-tab.active{ color:var(--indigo); background:#fff; box-shadow:inset 0 -3px 0 var(--indigo); }
+
+  .album-cover-wrap{ width:100%; aspect-ratio:4/3; overflow:hidden; background:var(--bg-soft); }
+  .album-cover{ width:100%; height:100%; object-fit:cover; display:block; }
+
+  .album-player{
+    display:flex; align-items:center; gap:14px;
+    padding:16px 20px; background:var(--bg-soft); border-bottom:1px solid var(--border);
+  }
+  .ap-play{
+    flex-shrink:0; width:42px; height:42px; border-radius:50%;
     background:var(--indigo); color:#fff; border:none; cursor:pointer;
     display:flex; align-items:center; justify-content:center;
     transition:background 0.2s ease, transform 0.15s ease;
     box-shadow:0 3px 10px rgba(35,8,90,0.25);
   }
-  .play-btn:hover{ background:var(--indigo-deep); transform:scale(1.06); }
-  .play-btn:active{ transform:scale(0.94); }
-  .play-btn .ic-pause{ display:none; }
-  .player.is-playing .play-btn .ic-play{ display:none; }
-  .player.is-playing .play-btn .ic-pause{ display:block; }
-  .player.is-playing .play-btn{
-    animation:playPulse 2s ease-in-out infinite;
+  .ap-play:hover{ background:var(--indigo-deep); }
+  .ap-play .ic-pause{ display:none; }
+  .album-player.is-playing .ap-play .ic-play{ display:none; }
+  .album-player.is-playing .ap-play .ic-pause{ display:block; }
+  .ap-main{ flex:1; min-width:0; }
+  .ap-title{
+    font-family:'Archivo', sans-serif; font-weight:700; font-size:0.9rem;
+    color:var(--ink); margin-bottom:6px;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
   }
-  @keyframes playPulse{
-    0%, 100%{ box-shadow:0 3px 10px rgba(35,8,90,0.25), 0 0 0 0 rgba(35,8,90,0.25); }
-    50%{ box-shadow:0 3px 10px rgba(35,8,90,0.25), 0 0 0 7px rgba(35,8,90,0); }
+  html[lang="fa"] .ap-title, body.show-fa .ap-title{ font-family:'Vazirmatn', sans-serif; }
+  .ap-row{ display:flex; align-items:center; gap:10px; }
+  .ap-track{
+    position:relative; flex:1; height:5px; border-radius:4px; background:var(--border);
+    cursor:pointer; touch-action:none;
   }
-  .player-body{ flex:1; min-width:0; }
-  .player-track{
-    position:relative; height:5px; border-radius:4px; background:var(--border);
-    cursor:pointer; margin-bottom:6px;
-  }
-  .player-fill{
+  .ap-fill{
     position:absolute; inset-inline-start:0; top:0; bottom:0; width:0%;
-    background:linear-gradient(90deg, var(--indigo), var(--gold));
-    border-radius:4px; transition:width 0.1s linear;
+    background:linear-gradient(90deg, var(--indigo), var(--gold)); border-radius:4px;
   }
-  .player-thumb{
-    position:absolute; top:50%; inset-inline-start:0%; width:11px; height:11px;
+  .ap-thumb{
+    position:absolute; top:50%; inset-inline-start:0%; width:12px; height:12px;
     background:#fff; border:2px solid var(--indigo); border-radius:50%;
-    transform:translate(-50%, -50%); transition:inset-inline-start 0.1s linear;
-    box-shadow:0 1px 4px rgba(0,0,0,0.2);
+    transform:translate(-50%, -50%); box-shadow:0 1px 4px rgba(0,0,0,0.2);
   }
-  html[dir="rtl"] .player-thumb{ transform:translate(50%, -50%); }
-  .player-time{
-    font-size:0.74rem; color:var(--muted); display:flex; gap:4px; font-variant-numeric:tabular-nums;
-  }
-  .player-time .t-sep{ opacity:0.5; }
-  @media (prefers-reduced-motion: reduce){
-    .player.is-playing .play-btn{ animation:none; }
-  }
-  .player audio{ display:none; }
+  html[dir="rtl"] .ap-thumb{ transform:translate(50%, -50%); }
+  .ap-time{ font-size:0.74rem; color:var(--muted); flex-shrink:0; display:flex; gap:3px; font-variant-numeric:tabular-nums; direction:ltr; }
+  .ap-sep{ opacity:0.5; }
 
+  .track-list{ display:none; }
+  .track-list.active{ display:block; }
+  .track-row{
+    display:flex; align-items:center; gap:12px;
+    padding:13px 20px; border-bottom:1px solid var(--border);
+    cursor:pointer; transition:background 0.15s ease;
+  }
+  .track-row:last-child{ border-bottom:none; }
+  .track-row:hover{ background:var(--bg-soft); }
+  .track-row.is-active{ background:rgba(35,8,90,0.05); }
+  .track-num{
+    font-family:'Archivo', sans-serif; font-weight:800; font-size:0.82rem;
+    color:var(--muted); width:20px; flex-shrink:0;
+  }
+  .track-row.is-active .track-num{ color:var(--indigo); }
+  .track-playicon{
+    flex-shrink:0; width:26px; height:26px; border-radius:50%;
+    border:1.5px solid var(--border); background:transparent; color:var(--muted);
+    display:flex; align-items:center; justify-content:center; cursor:pointer;
+    transition:background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  }
+  .track-row:hover .track-playicon{ border-color:var(--indigo); color:var(--indigo); }
+  .track-row.is-active .track-playicon{ background:var(--indigo); border-color:var(--indigo); color:#fff; }
+  .track-playicon .ic-pause{ display:none; }
+  .track-row.is-active.is-playing .track-playicon .ic-play{ display:none; }
+  .track-row.is-active.is-playing .track-playicon .ic-pause{ display:block; }
+  .track-title{
+    flex:1; min-width:0; font-size:0.92rem; font-weight:500; color:var(--ink);
+  }
+  .track-row.is-active .track-title{ color:var(--indigo); font-weight:600; }
+  .track-download{
+    flex-shrink:0; color:var(--muted); display:flex; align-items:center; justify-content:center;
+    width:28px; height:28px; border-radius:50%; transition:background 0.15s ease, color 0.15s ease;
+  }
+  .track-download:hover{ background:var(--border); color:var(--indigo); }
+
+  /* FOOTER */
   /* FOOTER */
   footer{ background:var(--indigo-deep); color:rgba(255,255,255,0.85); padding:48px 0 30px; }
   .footer-grid{ display:grid; grid-template-columns:1.3fr 1fr; gap:32px; margin-bottom:32px; }
@@ -571,7 +621,7 @@
             <span class="lang-en">Unseen Horizon is an anthology of independent reflections on the mysteries of existence. Through the meeting point of philosophy, literature, psychology, and the human imagination, each episode journeys beyond the visible world to explore life, death, identity, consciousness, memory, and the enduring search for meaning. It is a space for thoughtful minds; a quiet invitation to look beyond certainty and discover the unseen horizons of the human spirit.</span>
             <span class="lang-fa">افق نادیده، مجموعه‌ای است از جستارهای مستقل پیرامون اسرار هستی. در تلاقی‌گاه فلسفه، ادبیات، روان‌شناسی و خیال بشری، هر قسمت، سفری است فراتر از جهان دیدنی‌ها؛ برای کاویدن زندگی، مرگ، هویت، آگاهی، حافظه و آن جست‌وجوی بی‌پایان برای یافتن معنا. اینجا، مأمنی است برای اندیشمندان؛ دعوتی است خاموش برای آنکه فراتر از یقین‌ها بنگریم و افق‌های نادیده‌ی جان آدمی را بازشناسیم.</span>
           </p>
-          <a class="coll-link" href="#ep-group-1">
+          <a class="coll-link" href="#episodes" data-tab="0">
             <span class="lang-en">View episodes →</span>
             <span class="lang-fa">مشاهده قسمت‌ها ←</span>
           </a>
@@ -599,7 +649,7 @@
             <span class="lang-en">The project is developed in collaboration with the English Language and Literature Scientific Association, reflecting a shared commitment to promoting literary appreciation and lifelong learning.</span>
             <span class="lang-fa">این پروژه با همکاری انجمن علمی زبان و ادبیات انگلیسی توسعه یافته است که نشان‌دهنده‌ی تعهدی مشترک برای ترویج قدرشناسی ادبی و یادگیری مادام‌العمر است.</span>
           </p>
-          <a class="coll-link" href="#ep-group-2">
+          <a class="coll-link" href="#episodes" data-tab="1">
             <span class="lang-en">View episodes →</span>
             <span class="lang-fa">مشاهده قسمت‌ها ←</span>
           </a>
@@ -631,7 +681,7 @@
             <span class="lang-en">The project is developed in collaboration with the Cultural Center of Islamic World Studies, reflecting a shared commitment to preserving, promoting, and celebrating the intellectual and cultural heritage of the Islamic world.</span>
             <span class="lang-fa">این پروژه با همکاری کانون فرهنگی مطالعات جهان اسلام توسعه یافته است که نشان‌دهنده‌ی تعهدی مشترک برای حفظ، ترویج و تکریم میراث فکری و فرهنگی جهان اسلام است.</span>
           </p>
-          <a class="coll-link" href="#ep-group-4">
+          <a class="coll-link" href="#episodes" data-tab="2">
             <span class="lang-en">View episodes →</span>
             <span class="lang-fa">مشاهده قسمت‌ها ←</span>
           </a>
@@ -707,199 +757,124 @@
       </h2>
     </div>
 
-    <div class="episode-group" id="ep-group-1">
-      <div class="eg-head">
-        <span class="eg-dot" style="background:var(--c1);"></span>
-        <h3>
-          <span class="lang-en">I · The Unseen Horizon</span>
-          <span class="lang-fa">فصل یکم · افق نادیده</span>
-        </h3>
+    <div class="album-widget">
+      <div class="album-tabs">
+        <button class="album-tab active" type="button" data-cover="unseen-horizon.jpg" data-list="list-horizon">
+          <span class="lang-en">The Unseen Horizon</span>
+          <span class="lang-fa">افق نادیده</span>
+        </button>
+        <button class="album-tab" type="button" data-cover="ink-immortality.jpg" data-list="list-immortality">
+          <span class="lang-en">Ink and Immortality</span>
+          <span class="lang-fa">جوهر و جاودانگی</span>
+        </button>
+        <button class="album-tab" type="button" data-cover="living-heritage.jpg" data-list="list-heritage">
+          <span class="lang-en">Living Heritage</span>
+          <span class="lang-fa">میراث زنده</span>
+        </button>
       </div>
-      <div class="episode reveal">
-        <div class="ep-num" style="background:var(--c1);">01</div>
-        <div class="episode-body">
-          <div class="episode-title">
+
+      <div class="album-cover-wrap">
+        <img class="album-cover" id="albumCover" src="unseen-horizon.jpg" alt="">
+      </div>
+
+      <div class="album-player">
+        <button class="ap-play" id="apPlay" type="button" aria-label="Play">
+          <svg class="ic-play" viewBox="0 0 24 24" width="15" height="15"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+          <svg class="ic-pause" viewBox="0 0 24 24" width="15" height="15" hidden><path d="M6 5h4v14H6zM14 5h4v14h-4z" fill="currentColor"/></svg>
+        </button>
+        <div class="ap-main">
+          <div class="ap-title" id="apTitle">
             <span class="lang-en">Train of Memories</span>
             <span class="lang-fa">قطار خاطرات</span>
           </div>
-          <div class="episode-desc">
-            <span class="lang-en">Yet without an absence, there are no memories; and without memories, it is as though nothing exists at all.</span>
-            <span class="lang-fa">اما، جای خالی که نباشد، خاطرات هم نیستند؛ خاطرات که نباشند، اصلا انگار هیچ چیز نیست.</span>
-          </div>
-          <div class="episode-controls">
-            <div class="player" data-src="audio/philosophy-ep01.mp3">
-              <button class="play-btn" type="button" aria-label="Play">
-                <svg class="ic-play" viewBox="0 0 24 24" width="14" height="14"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-                <svg class="ic-pause" viewBox="0 0 24 24" width="14" height="14" hidden><path d="M6 5h4v14H6zM14 5h4v14h-4z" fill="currentColor"/></svg>
-              </button>
-              <div class="player-body">
-                <div class="player-track">
-                  <div class="player-fill"></div>
-                  <div class="player-thumb"></div>
-                </div>
-                <div class="player-time"><span class="t-cur">0:00</span><span class="t-sep">/</span><span class="t-dur">--:--</span></div>
-              </div>
-              <audio preload="none" src="audio/philosophy-ep01.mp3"></audio>
+          <div class="ap-row">
+            <div class="ap-track" id="apTrack">
+              <div class="ap-fill" id="apFill"></div>
+              <div class="ap-thumb" id="apThumb"></div>
             </div>
-            <a class="dl-link" href="audio/philosophy-ep01.mp3" download>
-              <span class="lang-en">Download</span>
-              <span class="lang-fa">دریافت</span>
-            </a>
+            <div class="ap-time"><span id="apCur">0:00</span><span class="ap-sep">/</span><span id="apDur">--:--</span></div>
           </div>
         </div>
       </div>
-      <div class="episode reveal">
-        <div class="ep-num" style="background:var(--c1);">02</div>
-        <div class="episode-body">
-          <div class="episode-title">
+
+      <audio id="albumAudio" preload="none"></audio>
+
+      <div class="track-list active" id="list-horizon">
+        <div class="track-row is-active" data-src="audio/philosophy-ep01.mp3">
+          <span class="track-num">01</span>
+          <button class="track-playicon" type="button" aria-label="Play">
+            <svg class="ic-play" viewBox="0 0 24 24" width="11" height="11"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+            <svg class="ic-pause" viewBox="0 0 24 24" width="11" height="11" hidden><path d="M6 5h4v14H6zM14 5h4v14h-4z" fill="currentColor"/></svg>
+          </button>
+          <span class="track-title">
+            <span class="lang-en">Train of Memories</span>
+            <span class="lang-fa">قطار خاطرات</span>
+          </span>
+          <a class="track-download" href="audio/philosophy-ep01.mp3" download aria-label="Download">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v11"/><path d="M7.5 10.5L12 15l4.5-4.5"/><path d="M5 20h14"/></svg>
+          </a>
+        </div>
+        <div class="track-row" data-src="audio/philosophy-ep02.mp3">
+          <span class="track-num">02</span>
+          <button class="track-playicon" type="button" aria-label="Play">
+            <svg class="ic-play" viewBox="0 0 24 24" width="11" height="11"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+            <svg class="ic-pause" viewBox="0 0 24 24" width="11" height="11" hidden><path d="M6 5h4v14H6zM14 5h4v14h-4z" fill="currentColor"/></svg>
+          </button>
+          <span class="track-title">
             <span class="lang-en">A Piece of Peace</span>
             <span class="lang-fa">قطعه‌ای از آرامش</span>
-          </div>
-          <div class="episode-desc">
-            <span class="lang-en">This life may be a brief chapter. But it is not the final page.</span>
-            <span class="lang-fa">این زندگی شاید فصلی کوتاه باشد؛ اما صفحه‌ی پایانی نیست.</span>
-          </div>
-          <div class="episode-controls">
-            <div class="player" data-src="audio/philosophy-ep02.mp3">
-              <button class="play-btn" type="button" aria-label="Play">
-                <svg class="ic-play" viewBox="0 0 24 24" width="14" height="14"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-                <svg class="ic-pause" viewBox="0 0 24 24" width="14" height="14" hidden><path d="M6 5h4v14H6zM14 5h4v14h-4z" fill="currentColor"/></svg>
-              </button>
-              <div class="player-body">
-                <div class="player-track">
-                  <div class="player-fill"></div>
-                  <div class="player-thumb"></div>
-                </div>
-                <div class="player-time"><span class="t-cur">0:00</span><span class="t-sep">/</span><span class="t-dur">--:--</span></div>
-              </div>
-              <audio preload="none" src="audio/philosophy-ep02.mp3"></audio>
-            </div>
-            <a class="dl-link" href="audio/philosophy-ep02.mp3" download>
-              <span class="lang-en">Download</span>
-              <span class="lang-fa">دریافت</span>
-            </a>
-          </div>
+          </span>
+          <a class="track-download" href="audio/philosophy-ep02.mp3" download aria-label="Download">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v11"/><path d="M7.5 10.5L12 15l4.5-4.5"/><path d="M5 20h14"/></svg>
+          </a>
         </div>
       </div>
-    </div>
 
-    <div class="episode-group" id="ep-group-2">
-      <div class="eg-head">
-        <span class="eg-dot" style="background:var(--c2);"></span>
-        <h3>
-          <span class="lang-en">II · Ink and Immortality — Season 1: The Tale of Immortality</span>
-          <span class="lang-fa">فصل دوم · جوهر و جاودانگی — فصل نخست: روایت جاودانگی</span>
-        </h3>
-      </div>
-      <div class="episode reveal">
-        <div class="ep-num" style="background:var(--c2);">01</div>
-        <div class="episode-body">
-          <div class="episode-title">
-            <span class="lang-en">Episode I — William Shakespeare</span>
-            <span class="lang-fa">قسمت اول — ویلیام شکسپیر</span>
-          </div>
-          <div class="episode-controls">
-            <div class="player" data-src="audio/immortality-s1-ep01.mp3">
-              <button class="play-btn" type="button" aria-label="Play">
-                <svg class="ic-play" viewBox="0 0 24 24" width="14" height="14"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-                <svg class="ic-pause" viewBox="0 0 24 24" width="14" height="14" hidden><path d="M6 5h4v14H6zM14 5h4v14h-4z" fill="currentColor"/></svg>
-              </button>
-              <div class="player-body">
-                <div class="player-track">
-                  <div class="player-fill"></div>
-                  <div class="player-thumb"></div>
-                </div>
-                <div class="player-time"><span class="t-cur">0:00</span><span class="t-sep">/</span><span class="t-dur">--:--</span></div>
-              </div>
-              <audio preload="none" src="audio/immortality-s1-ep01.mp3"></audio>
-            </div>
-            <a class="dl-link" href="audio/immortality-s1-ep01.mp3" download>
-              <span class="lang-en">Download</span>
-              <span class="lang-fa">دریافت</span>
-            </a>
-          </div>
+      <div class="track-list" id="list-immortality">
+        <div class="track-row" data-src="audio/immortality-s1-ep01.mp3">
+          <span class="track-num">01</span>
+          <button class="track-playicon" type="button" aria-label="Play">
+            <svg class="ic-play" viewBox="0 0 24 24" width="11" height="11"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+            <svg class="ic-pause" viewBox="0 0 24 24" width="11" height="11" hidden><path d="M6 5h4v14H6zM14 5h4v14h-4z" fill="currentColor"/></svg>
+          </button>
+          <span class="track-title">
+            <span class="lang-en">S1 &middot; Episode I &mdash; William Shakespeare</span>
+            <span class="lang-fa">فصل ۱ · قسمت اول — ویلیام شکسپیر</span>
+          </span>
+          <a class="track-download" href="audio/immortality-s1-ep01.mp3" download aria-label="Download">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v11"/><path d="M7.5 10.5L12 15l4.5-4.5"/><path d="M5 20h14"/></svg>
+          </a>
+        </div>
+        <div class="track-row" data-src="audio/immortality-s2-ep01.mp3">
+          <span class="track-num">02</span>
+          <button class="track-playicon" type="button" aria-label="Play">
+            <svg class="ic-play" viewBox="0 0 24 24" width="11" height="11"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+            <svg class="ic-pause" viewBox="0 0 24 24" width="11" height="11" hidden><path d="M6 5h4v14H6zM14 5h4v14h-4z" fill="currentColor"/></svg>
+          </button>
+          <span class="track-title">
+            <span class="lang-en">S2 &middot; Episode I &mdash; Daniel Defoe</span>
+            <span class="lang-fa">فصل ۲ · قسمت اول — دنیل دفو</span>
+          </span>
+          <a class="track-download" href="audio/immortality-s2-ep01.mp3" download aria-label="Download">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v11"/><path d="M7.5 10.5L12 15l4.5-4.5"/><path d="M5 20h14"/></svg>
+          </a>
         </div>
       </div>
-    </div>
 
-    <div class="episode-group" id="ep-group-3">
-      <div class="eg-head">
-        <span class="eg-dot" style="background:var(--c2);"></span>
-        <h3>
-          <span class="lang-en">II · Ink and Immortality — Season 2: Echoes of Imagination</span>
-          <span class="lang-fa">فصل دوم · جوهر و جاودانگی — فصل دوم: پژواک‌های خیال</span>
-        </h3>
-      </div>
-      <div class="eg-note">
-        <span class="lang-en">One episode currently available — more to come.</span>
-        <span class="lang-fa">یک قسمت در حال حاضر منتشر شده — قسمت‌های بیشتر به‌زودی.</span>
-      </div>
-      <div class="episode reveal" style="margin-top:12px;">
-        <div class="ep-num" style="background:var(--c2);">01</div>
-        <div class="episode-body">
-          <div class="episode-title">
-            <span class="lang-en">Episode I — Daniel Defoe</span>
-            <span class="lang-fa">قسمت اول — دنیل دفو</span>
-          </div>
-          <div class="episode-controls">
-            <div class="player" data-src="audio/immortality-s2-ep01.mp3">
-              <button class="play-btn" type="button" aria-label="Play">
-                <svg class="ic-play" viewBox="0 0 24 24" width="14" height="14"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-                <svg class="ic-pause" viewBox="0 0 24 24" width="14" height="14" hidden><path d="M6 5h4v14H6zM14 5h4v14h-4z" fill="currentColor"/></svg>
-              </button>
-              <div class="player-body">
-                <div class="player-track">
-                  <div class="player-fill"></div>
-                  <div class="player-thumb"></div>
-                </div>
-                <div class="player-time"><span class="t-cur">0:00</span><span class="t-sep">/</span><span class="t-dur">--:--</span></div>
-              </div>
-              <audio preload="none" src="audio/immortality-s2-ep01.mp3"></audio>
-            </div>
-            <a class="dl-link" href="audio/immortality-s2-ep01.mp3" download>
-              <span class="lang-en">Download</span>
-              <span class="lang-fa">دریافت</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="episode-group" id="ep-group-4">
-      <div class="eg-head">
-        <span class="eg-dot" style="background:var(--c3);"></span>
-        <h3>
-          <span class="lang-en">III · Living Heritage</span>
-          <span class="lang-fa">فصل سوم · میراث زنده</span>
-        </h3>
-      </div>
-      <div class="episode reveal">
-        <div class="ep-num" style="background:var(--c3);">01</div>
-        <div class="episode-body">
-          <div class="episode-title">
+      <div class="track-list" id="list-heritage">
+        <div class="track-row" data-src="audio/islamic-studies-ep01.mp3">
+          <span class="track-num">01</span>
+          <button class="track-playicon" type="button" aria-label="Play">
+            <svg class="ic-play" viewBox="0 0 24 24" width="11" height="11"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+            <svg class="ic-pause" viewBox="0 0 24 24" width="11" height="11" hidden><path d="M6 5h4v14H6zM14 5h4v14h-4z" fill="currentColor"/></svg>
+          </button>
+          <span class="track-title">
             <span class="lang-en">Al-Khwarizmi</span>
             <span class="lang-fa">خوارزمی</span>
-          </div>
-          <div class="episode-controls">
-            <div class="player" data-src="audio/islamic-studies-ep01.mp3">
-              <button class="play-btn" type="button" aria-label="Play">
-                <svg class="ic-play" viewBox="0 0 24 24" width="14" height="14"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-                <svg class="ic-pause" viewBox="0 0 24 24" width="14" height="14" hidden><path d="M6 5h4v14H6zM14 5h4v14h-4z" fill="currentColor"/></svg>
-              </button>
-              <div class="player-body">
-                <div class="player-track">
-                  <div class="player-fill"></div>
-                  <div class="player-thumb"></div>
-                </div>
-                <div class="player-time"><span class="t-cur">0:00</span><span class="t-sep">/</span><span class="t-dur">--:--</span></div>
-              </div>
-              <audio preload="none" src="audio/islamic-studies-ep01.mp3"></audio>
-            </div>
-            <a class="dl-link" href="audio/islamic-studies-ep01.mp3" download>
-              <span class="lang-en">Download</span>
-              <span class="lang-fa">دریافت</span>
-            </a>
-          </div>
+          </span>
+          <a class="track-download" href="audio/islamic-studies-ep01.mp3" download aria-label="Download">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v11"/><path d="M7.5 10.5L12 15l4.5-4.5"/><path d="M5 20h14"/></svg>
+          </a>
         </div>
       </div>
     </div>
@@ -957,63 +932,144 @@
     window.addEventListener('scroll', checkNavScroll, { passive:true });
     checkNavScroll();
 
-    // custom audio players
+    // ===== ALBUM WIDGET =====
     function formatTime(sec){
       if (!isFinite(sec) || isNaN(sec)) return '--:--';
       var m = Math.floor(sec / 60);
       var s = Math.floor(sec % 60);
       return m + ':' + (s < 10 ? '0' : '') + s;
     }
-    var allPlayers = Array.prototype.slice.call(document.querySelectorAll('.player'));
-    allPlayers.forEach(function(p){
-      var audio = p.querySelector('audio');
-      var btn = p.querySelector('.play-btn');
-      var track = p.querySelector('.player-track');
-      var fill = p.querySelector('.player-fill');
-      var thumb = p.querySelector('.player-thumb');
-      var curEl = p.querySelector('.t-cur');
-      var durEl = p.querySelector('.t-dur');
 
-      function setProgress(pct){
-        fill.style.width = pct + '%';
-        thumb.style.insetInlineStart = pct + '%';
-      }
+    var albumAudio = document.getElementById('albumAudio');
+    var albumCover = document.getElementById('albumCover');
+    var apPlayer = document.querySelector('.album-player');
+    var apPlay = document.getElementById('apPlay');
+    var apTitle = document.getElementById('apTitle');
+    var apTrack = document.getElementById('apTrack');
+    var apFill = document.getElementById('apFill');
+    var apThumb = document.getElementById('apThumb');
+    var apCur = document.getElementById('apCur');
+    var apDur = document.getElementById('apDur');
+    var apDragging = false;
+    var activeTrackRow = null;
 
-      btn.addEventListener('click', function(){
-        if (audio.paused){
-          allPlayers.forEach(function(other){
-            if (other !== p){
-              var oa = other.querySelector('audio');
-              if (!oa.paused){ oa.pause(); other.classList.remove('is-playing'); }
-            }
-          });
-          audio.play();
-        } else {
-          audio.pause();
+    function setApProgress(pct){
+      apFill.style.width = pct + '%';
+      apThumb.style.insetInlineStart = pct + '%';
+    }
+
+    function loadTrack(row, autoplay){
+      if (activeTrackRow){ activeTrackRow.classList.remove('is-active', 'is-playing'); }
+      activeTrackRow = row;
+      row.classList.add('is-active');
+      var src = row.getAttribute('data-src');
+      var titleHtml = row.querySelector('.track-title').innerHTML;
+      apTitle.innerHTML = titleHtml;
+      albumAudio.src = src;
+      setApProgress(0);
+      apCur.textContent = '0:00';
+      apDur.textContent = '--:--';
+      if (autoplay){ albumAudio.play(); }
+    }
+
+    document.querySelectorAll('.track-row').forEach(function(row){
+      function playThis(){
+        if (activeTrackRow === row){
+          if (albumAudio.paused){ albumAudio.play(); } else { albumAudio.pause(); }
+          return;
         }
-      });
-
-      audio.addEventListener('play', function(){ p.classList.add('is-playing'); });
-      audio.addEventListener('pause', function(){ p.classList.remove('is-playing'); });
-      audio.addEventListener('ended', function(){ p.classList.remove('is-playing'); setProgress(0); });
-
-      audio.addEventListener('loadedmetadata', function(){
-        durEl.textContent = formatTime(audio.duration);
-      });
-      audio.addEventListener('timeupdate', function(){
-        curEl.textContent = formatTime(audio.currentTime);
-        if (audio.duration){ setProgress((audio.currentTime / audio.duration) * 100); }
-      });
-
-      function seek(clientX){
-        var rect = track.getBoundingClientRect();
-        var ratio = (clientX - rect.left) / rect.width;
-        if (htmlEl.getAttribute('dir') === 'rtl'){ ratio = 1 - ratio; }
-        ratio = Math.min(1, Math.max(0, ratio));
-        if (audio.duration){ audio.currentTime = ratio * audio.duration; }
+        loadTrack(row, true);
       }
-      track.addEventListener('click', function(e){ seek(e.clientX); });
+      row.querySelector('.track-playicon').addEventListener('click', function(e){
+        e.stopPropagation();
+        playThis();
+      });
+      row.addEventListener('click', playThis);
+      row.querySelector('.track-download').addEventListener('click', function(e){ e.stopPropagation(); });
     });
+
+    albumAudio.addEventListener('play', function(){
+      apPlayer.classList.add('is-playing');
+      if (activeTrackRow){ activeTrackRow.classList.add('is-playing'); }
+    });
+    albumAudio.addEventListener('pause', function(){
+      apPlayer.classList.remove('is-playing');
+      if (activeTrackRow){ activeTrackRow.classList.remove('is-playing'); }
+    });
+    albumAudio.addEventListener('ended', function(){
+      apPlayer.classList.remove('is-playing');
+      if (activeTrackRow){ activeTrackRow.classList.remove('is-playing'); }
+      setApProgress(0);
+      apCur.textContent = '0:00';
+    });
+    albumAudio.addEventListener('loadedmetadata', function(){
+      apDur.textContent = formatTime(albumAudio.duration);
+    });
+    albumAudio.addEventListener('timeupdate', function(){
+      if (apDragging) return;
+      apCur.textContent = formatTime(albumAudio.currentTime);
+      if (albumAudio.duration && isFinite(albumAudio.duration)){ setApProgress((albumAudio.currentTime / albumAudio.duration) * 100); }
+    });
+
+    apPlay.addEventListener('click', function(){
+      if (!activeTrackRow){
+        var first = document.querySelector('.track-list.active .track-row');
+        if (first){ loadTrack(first, true); }
+        return;
+      }
+      if (albumAudio.paused){ albumAudio.play(); } else { albumAudio.pause(); }
+    });
+
+    function apRatioFromPoint(clientX){
+      var rect = apTrack.getBoundingClientRect();
+      var ratio = (clientX - rect.left) / rect.width;
+      if (htmlEl.getAttribute('dir') === 'rtl'){ ratio = 1 - ratio; }
+      return Math.min(1, Math.max(0, ratio));
+    }
+    apTrack.addEventListener('pointerdown', function(e){
+      if (!albumAudio.duration || !isFinite(albumAudio.duration)) return;
+      apDragging = true;
+      apTrack.setPointerCapture(e.pointerId);
+      var ratio = apRatioFromPoint(e.clientX);
+      setApProgress(ratio * 100);
+      apCur.textContent = formatTime(ratio * albumAudio.duration);
+    });
+    apTrack.addEventListener('pointermove', function(e){
+      if (!apDragging) return;
+      var ratio = apRatioFromPoint(e.clientX);
+      setApProgress(ratio * 100);
+      apCur.textContent = formatTime(ratio * albumAudio.duration);
+    });
+    apTrack.addEventListener('pointerup', function(e){
+      if (!apDragging) return;
+      apDragging = false;
+      var ratio = apRatioFromPoint(e.clientX);
+      if (albumAudio.duration && isFinite(albumAudio.duration)){ albumAudio.currentTime = ratio * albumAudio.duration; }
+    });
+    apTrack.addEventListener('pointercancel', function(){ apDragging = false; });
+
+    var albumTabs = document.querySelectorAll('.album-tab');
+    function activateTab(idx){
+      albumTabs.forEach(function(t, i){ t.classList.toggle('active', i === idx); });
+      var tab = albumTabs[idx];
+      albumCover.src = tab.getAttribute('data-cover');
+      document.querySelectorAll('.track-list').forEach(function(list){
+        list.classList.toggle('active', list.id === tab.getAttribute('data-list'));
+      });
+      if (activeTrackRow && !activeTrackRow.closest('.track-list').classList.contains('active')){
+        albumAudio.pause();
+      }
+    }
+    albumTabs.forEach(function(tab, idx){
+      tab.addEventListener('click', function(){ activateTab(idx); });
+    });
+
+    document.querySelectorAll('.coll-link[data-tab]').forEach(function(link){
+      link.addEventListener('click', function(){
+        activateTab(parseInt(link.getAttribute('data-tab'), 10));
+      });
+    });
+
     if ('IntersectionObserver' in window){
       var obs = new IntersectionObserver(function(entries){
         entries.forEach(function(e){
