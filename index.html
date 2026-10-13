@@ -424,6 +424,8 @@
   html[dir="rtl"] .ap-thumb{ transform:translate(50%, -50%); }
   .ap-time{ font-size:0.74rem; color:var(--muted); flex-shrink:0; display:flex; gap:3px; font-variant-numeric:tabular-nums; direction:ltr; }
   .ap-sep{ opacity:0.5; }
+  .ap-error{ display:none; font-size:0.76rem; color:#B3382C; margin-top:6px; }
+  .ap-error.show{ display:block; }
 
   .track-list{ display:none; }
   .track-list.active{ display:block; }
@@ -794,6 +796,7 @@
             </div>
             <div class="ap-time"><span id="apCur">0:00</span><span class="ap-sep">/</span><span id="apDur">--:--</span></div>
           </div>
+          <div class="ap-error" id="apError"></div>
         </div>
       </div>
 
@@ -958,24 +961,50 @@
       apThumb.style.insetInlineStart = pct + '%';
     }
 
+    var apErrorEl = document.getElementById('apError');
+    function showPlayError(label){
+      apErrorEl.textContent = label;
+      apErrorEl.classList.add('show');
+    }
+    function clearPlayError(){
+      apErrorEl.classList.remove('show');
+      apErrorEl.textContent = '';
+    }
+    function attemptPlay(){
+      var p = albumAudio.play();
+      if (p && typeof p.catch === 'function'){
+        p.then(clearPlayError).catch(function(err){
+          showPlayError('Playback failed: ' + (err && err.name ? err.name : err) + ' — src: ' + albumAudio.currentSrc);
+        });
+      }
+    }
+
     function loadTrack(row, autoplay){
       if (activeTrackRow){ activeTrackRow.classList.remove('is-active', 'is-playing'); }
       activeTrackRow = row;
       row.classList.add('is-active');
+      clearPlayError();
       var src = row.getAttribute('data-src');
       var titleHtml = row.querySelector('.track-title').innerHTML;
       apTitle.innerHTML = titleHtml;
       albumAudio.src = src;
+      albumAudio.load();
       setApProgress(0);
       apCur.textContent = '0:00';
       apDur.textContent = '--:--';
-      if (autoplay){ albumAudio.play(); }
+      if (autoplay){ attemptPlay(); }
     }
+
+    albumAudio.addEventListener('error', function(){
+      var code = albumAudio.error ? albumAudio.error.code : 'unknown';
+      var names = {1:'ABORTED', 2:'NETWORK', 3:'DECODE', 4:'SRC_NOT_SUPPORTED'};
+      showPlayError('Audio error ' + code + ' (' + (names[code] || 'unknown') + ') — src: ' + albumAudio.currentSrc);
+    });
 
     document.querySelectorAll('.track-row').forEach(function(row){
       function playThis(){
         if (activeTrackRow === row){
-          if (albumAudio.paused){ albumAudio.play(); } else { albumAudio.pause(); }
+          if (albumAudio.paused){ attemptPlay(); } else { albumAudio.pause(); }
           return;
         }
         loadTrack(row, true);
@@ -1017,7 +1046,7 @@
         if (first){ loadTrack(first, true); }
         return;
       }
-      if (albumAudio.paused){ albumAudio.play(); } else { albumAudio.pause(); }
+      if (albumAudio.paused){ attemptPlay(); } else { albumAudio.pause(); }
     });
 
     function apRatioFromPoint(clientX){
