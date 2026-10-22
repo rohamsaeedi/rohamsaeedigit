@@ -18,7 +18,8 @@
 <meta name="twitter:image" content="roham-seal.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Inter:wght@400;500;600&family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Inter:wght@400;500;600&family=Vazirmatn:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Inter:wght@400;500;600&family=Vazirmatn:wght@400;500;600;700&display=swap"></noscript>
 <style>
   :root{
     --indigo:#23085A;
@@ -1076,6 +1077,13 @@
       if (albumAudio.duration && isFinite(albumAudio.duration)){ albumAudio.currentTime = ratio * albumAudio.duration; }
     });
     apTrack.addEventListener('pointercancel', function(){ apDragging = false; });
+    apTrack.addEventListener('click', function(e){
+      if (!albumAudio.duration || !isFinite(albumAudio.duration)) return;
+      var ratio = apRatioFromPoint(e.clientX);
+      albumAudio.currentTime = ratio * albumAudio.duration;
+      setApProgress(ratio * 100);
+      apCur.textContent = formatTime(ratio * albumAudio.duration);
+    });
 
     var albumTabs = document.querySelectorAll('.album-tab');
     function activateTab(idx){
